@@ -1,0 +1,6 @@
+# of module          name                 type                 compatible
+bmac                 bmac                 *                    *
+bmac                 *                    network              bmac+
+airport              radio                *                    *
+mace                 mace                 *                    *
+snd-aoa-i2sbus       i2s                  *                    *

@@ -1,0 +1,409 @@
+/lib/modules/2.6.24.5/kernel/crypto/michael_mic.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/deflate.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko /lib/modules/2.6.24.5/kernel/lib/zlib_deflate/zlib_deflate.ko
+/lib/modules/2.6.24.5/kernel/crypto/sha256_generic.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/arc4.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/crc32c.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko /lib/modules/2.6.24.5/kernel/lib/libcrc32c.ko
+/lib/modules/2.6.24.5/kernel/crypto/pcbc.ko: /lib/modules/2.6.24.5/kernel/crypto/blkcipher.ko /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/xts.ko: /lib/modules/2.6.24.5/kernel/crypto/blkcipher.ko /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko /lib/modules/2.6.24.5/kernel/crypto/gf128mul.ko
+/lib/modules/2.6.24.5/kernel/crypto/xor.ko:
+/lib/modules/2.6.24.5/kernel/crypto/hmac.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko /lib/modules/2.6.24.5/kernel/crypto/crypto_hash.ko
+/lib/modules/2.6.24.5/kernel/crypto/des_generic.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/cryptomgr.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/blkcipher.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/aead.ko:
+/lib/modules/2.6.24.5/kernel/crypto/blowfish.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/md5.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko:
+/lib/modules/2.6.24.5/kernel/crypto/aes_generic.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/ecb.ko: /lib/modules/2.6.24.5/kernel/crypto/blkcipher.ko /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/cbc.ko: /lib/modules/2.6.24.5/kernel/crypto/blkcipher.ko /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/authenc.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko /lib/modules/2.6.24.5/kernel/crypto/aead.ko
+/lib/modules/2.6.24.5/kernel/crypto/seed.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/crypto_hash.ko:
+/lib/modules/2.6.24.5/kernel/crypto/sha1_generic.ko: /lib/modules/2.6.24.5/kernel/crypto/crypto_algapi.ko
+/lib/modules/2.6.24.5/kernel/crypto/async_tx/async_xor.ko: /lib/modules/2.6.24.5/kernel/crypto/xor.ko
+/lib/modules/2.6.24.5/kernel/crypto/async_tx/async_memcpy.ko:
+/lib/modules/2.6.24.5/kernel/crypto/async_tx/async_tx.ko:
+/lib/modules/2.6.24.5/kernel/crypto/gf128mul.ko:
+/lib/modules/2.6.24.5/kernel/drivers/macintosh/therm_windtunnel.ko:
+/lib/modules/2.6.24.5/kernel/drivers/macintosh/apm_emu.ko: /lib/modules/2.6.24.5/kernel/drivers/char/apm-emulation.ko
+/lib/modules/2.6.24.5/kernel/drivers/macintosh/therm_adt746x.ko:
+/lib/modules/2.6.24.5/kernel/drivers/macintosh/rack-meter.ko:
+/lib/modules/2.6.24.5/kernel/drivers/macintosh/ans-lcd.ko:
+/lib/modules/2.6.24.5/kernel/drivers/macintosh/windfarm_core.ko:
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/hci_uart.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/btuart_cs.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/bpa10x.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/bfusb.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/dtl1_cs.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/bcm203x.ko:
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/bluecard_cs.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/hci_vhci.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/hci_usb.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/drivers/bluetooth/bt3c_cs.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/serial/8250.ko:
+/lib/modules/2.6.24.5/kernel/drivers/serial/8250_pci.ko: /lib/modules/2.6.24.5/kernel/drivers/serial/8250.ko
+/lib/modules/2.6.24.5/kernel/drivers/pcmcia/yenta_socket.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/rsrc_nonstatic.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko:
+/lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/pcmcia/rsrc_nonstatic.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/ieee1394/eth1394.ko:
+/lib/modules/2.6.24.5/kernel/drivers/ieee1394/dv1394.ko: /lib/modules/2.6.24.5/kernel/drivers/ieee1394/ohci1394.ko
+/lib/modules/2.6.24.5/kernel/drivers/ieee1394/ohci1394.ko:
+/lib/modules/2.6.24.5/kernel/drivers/ieee1394/raw1394.ko:
+/lib/modules/2.6.24.5/kernel/drivers/ieee1394/video1394.ko: /lib/modules/2.6.24.5/kernel/drivers/ieee1394/ohci1394.ko
+/lib/modules/2.6.24.5/kernel/drivers/video/backlight/lcd.ko:
+/lib/modules/2.6.24.5/kernel/drivers/video/backlight/corgi_bl.ko:
+/lib/modules/2.6.24.5/kernel/drivers/video/output.ko:
+/lib/modules/2.6.24.5/kernel/drivers/video/uvesafb.ko:
+/lib/modules/2.6.24.5/kernel/drivers/power/power_supply.ko:
+/lib/modules/2.6.24.5/kernel/drivers/power/pmu_battery.ko: /lib/modules/2.6.24.5/kernel/drivers/power/power_supply.ko
+/lib/modules/2.6.24.5/kernel/drivers/power/apm_power.ko: /lib/modules/2.6.24.5/kernel/drivers/power/power_supply.ko /lib/modules/2.6.24.5/kernel/drivers/char/apm-emulation.ko
+/lib/modules/2.6.24.5/kernel/drivers/input/evdev.ko:
+/lib/modules/2.6.24.5/kernel/drivers/input/serio/libps2.ko:
+/lib/modules/2.6.24.5/kernel/drivers/input/mouse/psmouse.ko: /lib/modules/2.6.24.5/kernel/drivers/input/serio/libps2.ko
+/lib/modules/2.6.24.5/kernel/drivers/input/mouse/sermouse.ko:
+/lib/modules/2.6.24.5/kernel/drivers/input/mouse/appletouch.ko:
+/lib/modules/2.6.24.5/kernel/drivers/block/pktcdvd.ko:
+/lib/modules/2.6.24.5/kernel/drivers/block/swim3.ko:
+/lib/modules/2.6.24.5/kernel/drivers/block/ub.ko:
+/lib/modules/2.6.24.5/kernel/drivers/cpufreq/cpufreq_conservative.ko:
+/lib/modules/2.6.24.5/kernel/drivers/scsi/aic7xxx/aic7xxx.ko:
+/lib/modules/2.6.24.5/kernel/drivers/scsi/scsi_wait_scan.ko:
+/lib/modules/2.6.24.5/kernel/drivers/scsi/scsi_transport_iscsi.ko:
+/lib/modules/2.6.24.5/kernel/drivers/scsi/aic7xxx_old.ko:
+/lib/modules/2.6.24.5/kernel/drivers/scsi/scsi_transport_fc.ko:
+/lib/modules/2.6.24.5/kernel/drivers/scsi/ide-scsi.ko:
+/lib/modules/2.6.24.5/kernel/drivers/leds/ledtrig-timer.ko:
+/lib/modules/2.6.24.5/kernel/drivers/leds/ledtrig-heartbeat.ko:
+/lib/modules/2.6.24.5/kernel/drivers/char/hw_random/rng-core.ko:
+/lib/modules/2.6.24.5/kernel/drivers/char/apm-emulation.ko:
+/lib/modules/2.6.24.5/kernel/drivers/char/drm/drm.ko: /lib/modules/2.6.24.5/kernel/drivers/char/agp/agpgart.ko
+/lib/modules/2.6.24.5/kernel/drivers/char/drm/r128.ko: /lib/modules/2.6.24.5/kernel/drivers/char/drm/drm.ko /lib/modules/2.6.24.5/kernel/drivers/char/agp/agpgart.ko
+/lib/modules/2.6.24.5/kernel/drivers/char/drm/radeon.ko: /lib/modules/2.6.24.5/kernel/drivers/char/drm/drm.ko /lib/modules/2.6.24.5/kernel/drivers/char/agp/agpgart.ko
+/lib/modules/2.6.24.5/kernel/drivers/char/agp/agpgart.ko:
+/lib/modules/2.6.24.5/kernel/drivers/char/agp/uninorth-agp.ko: /lib/modules/2.6.24.5/kernel/drivers/char/agp/agpgart.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/ftdi_sio.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/ipaq.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/cypress_m8.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/belkin_sa.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/io_ti.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/omninet.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/digi_acceleport.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/hp4x.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/ark3116.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/option.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/funsoft.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/io_edgeport.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/cyberjack.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/ipw.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/kobil_sct.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/ti_usb_3410_5052.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/airprime.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/pl2303.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/empeg.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/cp2101.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/safe_serial.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/keyspan.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/navman.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/garmin_gps.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/ir-usb.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/mct_u232.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/kl5kusb105.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/keyspan_pda.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/whiteheat.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko:
+/lib/modules/2.6.24.5/kernel/drivers/usb/serial/visor.ko: /lib/modules/2.6.24.5/kernel/drivers/usb/serial/usbserial.ko
+/lib/modules/2.6.24.5/kernel/drivers/usb/class/usblp.ko:
+/lib/modules/2.6.24.5/kernel/drivers/usb/class/cdc-acm.ko:
+/lib/modules/2.6.24.5/kernel/drivers/ssb/ssb.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-test.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-v3020.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-pcf8563.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-x1205.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-isl1208.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko:
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-ds1742.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-rs5c372.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-ds1672.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-ds1553.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-ds1307.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-m48t86.ko: /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-core.ko /lib/modules/2.6.24.5/kernel/drivers/rtc/rtc-lib.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/ppp_deflate.ko: /lib/modules/2.6.24.5/kernel/lib/zlib_deflate/zlib_deflate.ko /lib/modules/2.6.24.5/kernel/drivers/net/ppp_generic.ko /lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/ppp_synctty.ko: /lib/modules/2.6.24.5/kernel/drivers/net/ppp_generic.ko /lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/dummy.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/bonding/bonding.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/bmac.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/pcnet32.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/sungem_phy.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/ppp_generic.ko: /lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/prism54/prism54.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/hermes.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/bcm43xx/bcm43xx.ko: /lib/modules/2.6.24.5/kernel/drivers/char/hw_random/rng-core.ko /lib/modules/2.6.24.5/kernel/net/ieee80211/softmac/ieee80211softmac.ko /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211.ko /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/b43legacy/b43legacy.ko: /lib/modules/2.6.24.5/kernel/drivers/ssb/ssb.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko /lib/modules/2.6.24.5/kernel/drivers/char/hw_random/rng-core.ko /lib/modules/2.6.24.5/kernel/net/mac80211/mac80211.ko /lib/modules/2.6.24.5/kernel/net/wireless/cfg80211.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/airport.ko: /lib/modules/2.6.24.5/kernel/drivers/net/wireless/orinoco.ko /lib/modules/2.6.24.5/kernel/drivers/net/wireless/hermes.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/orinoco.ko: /lib/modules/2.6.24.5/kernel/drivers/net/wireless/hermes.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/wireless/b43/b43.ko: /lib/modules/2.6.24.5/kernel/drivers/ssb/ssb.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/drivers/char/hw_random/rng-core.ko /lib/modules/2.6.24.5/kernel/net/mac80211/mac80211.ko /lib/modules/2.6.24.5/kernel/net/wireless/cfg80211.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/tun.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/veth.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/eql.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/cassini.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/ppp_async.ko: /lib/modules/2.6.24.5/kernel/drivers/net/ppp_generic.ko /lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/mace.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/bsd_comp.ko: /lib/modules/2.6.24.5/kernel/drivers/net/ppp_generic.ko /lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/appletalk/ipddp.ko: /lib/modules/2.6.24.5/kernel/net/appletalk/appletalk.ko /lib/modules/2.6.24.5/kernel/net/802/psnap.ko /lib/modules/2.6.24.5/kernel/net/llc/llc.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/sunhme.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/sungem.ko: /lib/modules/2.6.24.5/kernel/drivers/net/sungem_phy.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/irda/irtty-sir.ko: /lib/modules/2.6.24.5/kernel/drivers/net/irda/sir-dev.ko /lib/modules/2.6.24.5/kernel/net/irda/irda.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/irda/sir-dev.ko: /lib/modules/2.6.24.5/kernel/net/irda/irda.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/usb/asix.ko: /lib/modules/2.6.24.5/kernel/drivers/net/usb/usbnet.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/usb/cdc_ether.ko: /lib/modules/2.6.24.5/kernel/drivers/net/usb/usbnet.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/usb/net1080.ko: /lib/modules/2.6.24.5/kernel/drivers/net/usb/usbnet.ko
+/lib/modules/2.6.24.5/kernel/drivers/net/usb/usbnet.ko:
+/lib/modules/2.6.24.5/kernel/drivers/net/usb/zaurus.ko: /lib/modules/2.6.24.5/kernel/drivers/net/usb/cdc_ether.ko /lib/modules/2.6.24.5/kernel/drivers/net/usb/usbnet.ko
+/lib/modules/2.6.24.5/kernel/drivers/ide/legacy/ide-cs.ko: /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia.ko /lib/modules/2.6.24.5/kernel/drivers/pcmcia/pcmcia_core.ko
+/lib/modules/2.6.24.5/kernel/drivers/i2c/i2c-dev.ko:
+/lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko:
+/lib/modules/2.6.24.5/kernel/drivers/md/linear.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/faulty.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/raid10.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/raid1.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/raid0.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/dm-crypt.ko: /lib/modules/2.6.24.5/kernel/drivers/md/dm-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/multipath.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/raid456.ko: /lib/modules/2.6.24.5/kernel/drivers/md/md-mod.ko /lib/modules/2.6.24.5/kernel/crypto/async_tx/async_xor.ko /lib/modules/2.6.24.5/kernel/crypto/async_tx/async_memcpy.ko /lib/modules/2.6.24.5/kernel/crypto/async_tx/async_tx.ko /lib/modules/2.6.24.5/kernel/crypto/xor.ko
+/lib/modules/2.6.24.5/kernel/drivers/md/dm-mod.ko:
+/lib/modules/2.6.24.5/kernel/sound/soundcore.ko:
+/lib/modules/2.6.24.5/kernel/sound/drivers/snd-dummy.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-pcm.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko
+/lib/modules/2.6.24.5/kernel/sound/core/snd-pcm.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko
+/lib/modules/2.6.24.5/kernel/sound/core/snd.ko: /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/snd-rawmidi.ko: /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko:
+/lib/modules/2.6.24.5/kernel/sound/core/snd-hwdep.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-dummy.ko: /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-midi-event.ko: /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-midi.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-rawmidi.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-midi-event.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/seq/oss/snd-seq-oss.ko: /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-midi-event.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/oss/snd-pcm-oss.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-pcm.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko /lib/modules/2.6.24.5/kernel/sound/core/oss/snd-mixer-oss.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/core/oss/snd-mixer-oss.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/usb/snd-usb-lib.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-rawmidi.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/usb/snd-usb-audio.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-pcm.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko /lib/modules/2.6.24.5/kernel/sound/usb/snd-usb-lib.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-rawmidi.ko /lib/modules/2.6.24.5/kernel/sound/core/seq/snd-seq-device.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-hwdep.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/ppc/snd-powermac.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-pcm.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko
+/lib/modules/2.6.24.5/kernel/sound/aoa/codecs/snd-aoa-codec-tas.ko: /lib/modules/2.6.24.5/kernel/sound/aoa/core/snd-aoa.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/aoa/codecs/snd-aoa-codec-toonie.ko: /lib/modules/2.6.24.5/kernel/sound/aoa/core/snd-aoa.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/aoa/codecs/snd-aoa-codec-onyx.ko: /lib/modules/2.6.24.5/kernel/sound/aoa/core/snd-aoa.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/aoa/fabrics/snd-aoa-fabric-layout.ko: /lib/modules/2.6.24.5/kernel/sound/aoa/soundbus/snd-aoa-soundbus.ko /lib/modules/2.6.24.5/kernel/sound/aoa/core/snd-aoa.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/sound/aoa/soundbus/i2sbus/snd-aoa-i2sbus.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd-pcm.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-timer.ko /lib/modules/2.6.24.5/kernel/sound/core/snd-page-alloc.ko /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko /lib/modules/2.6.24.5/kernel/sound/aoa/soundbus/snd-aoa-soundbus.ko
+/lib/modules/2.6.24.5/kernel/sound/aoa/soundbus/snd-aoa-soundbus.ko:
+/lib/modules/2.6.24.5/kernel/sound/aoa/core/snd-aoa.ko: /lib/modules/2.6.24.5/kernel/sound/core/snd.ko /lib/modules/2.6.24.5/kernel/sound/soundcore.ko
+/lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko:
+/lib/modules/2.6.24.5/kernel/net/bluetooth/l2cap.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/net/bluetooth/sco.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/net/bluetooth/rfcomm/rfcomm.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/l2cap.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/net/bluetooth/hidp/hidp.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/l2cap.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/net/bluetooth/bnep/bnep.ko: /lib/modules/2.6.24.5/kernel/net/bluetooth/l2cap.ko /lib/modules/2.6.24.5/kernel/net/bluetooth/bluetooth.ko
+/lib/modules/2.6.24.5/kernel/net/wireless/cfg80211.ko:
+/lib/modules/2.6.24.5/kernel/net/sunrpc/sunrpc.ko:
+/lib/modules/2.6.24.5/kernel/net/rfkill/rfkill-input.ko: /lib/modules/2.6.24.5/kernel/net/rfkill/rfkill.ko
+/lib/modules/2.6.24.5/kernel/net/rfkill/rfkill.ko:
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_NFQUEUE.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_TRACE.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_statistic.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_irc.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_ftp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_policy.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_TCPMSS.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_multiport.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_length.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_connmark.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_NFLOG.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nfnetlink_log.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nfnetlink.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_time.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_tcpudp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_comment.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nfnetlink.ko:
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_tcpmss.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko:
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_mark.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko:
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_connbytes.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_string.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_dscp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_sctp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_CONNMARK.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_MARK.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_limit.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_CLASSIFY.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_NOTRACK.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_DSCP.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_realm.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_u32.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_helper.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_quota.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_dccp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_mac.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_pkttype.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_h323.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_hashlimit.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_esp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nfnetlink_queue.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nfnetlink.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_state.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_conntrack.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_proto_sctp.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/netfilter/xt_connlimit.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt_wep.ko: /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko
+/lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt_ccmp.ko: /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211.ko /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko
+/lib/modules/2.6.24.5/kernel/net/ieee80211/softmac/ieee80211softmac.ko: /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211.ko /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko
+/lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211.ko: /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko
+/lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko:
+/lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt_tkip.ko: /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211.ko /lib/modules/2.6.24.5/kernel/net/ieee80211/ieee80211_crypt.ko
+/lib/modules/2.6.24.5/kernel/net/mac80211/mac80211.ko: /lib/modules/2.6.24.5/kernel/net/wireless/cfg80211.ko
+/lib/modules/2.6.24.5/kernel/net/appletalk/appletalk.ko: /lib/modules/2.6.24.5/kernel/net/802/psnap.ko /lib/modules/2.6.24.5/kernel/net/llc/llc.ko
+/lib/modules/2.6.24.5/kernel/net/xfrm/xfrm_user.ko:
+/lib/modules/2.6.24.5/kernel/net/irda/irda.ko:
+/lib/modules/2.6.24.5/kernel/net/irda/ircomm/ircomm-tty.ko: /lib/modules/2.6.24.5/kernel/net/irda/ircomm/ircomm.ko /lib/modules/2.6.24.5/kernel/net/irda/irda.ko
+/lib/modules/2.6.24.5/kernel/net/irda/ircomm/ircomm.ko: /lib/modules/2.6.24.5/kernel/net/irda/irda.ko
+/lib/modules/2.6.24.5/kernel/net/irda/irnet/irnet.ko: /lib/modules/2.6.24.5/kernel/net/irda/irda.ko /lib/modules/2.6.24.5/kernel/drivers/net/ppp_generic.ko /lib/modules/2.6.24.5/kernel/drivers/net/slhc.ko
+/lib/modules/2.6.24.5/kernel/net/irda/irlan/irlan.ko: /lib/modules/2.6.24.5/kernel/net/irda/irda.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv6/xfrm6_mode_tunnel.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv6/xfrm6_mode_transport.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv6/xfrm6_tunnel.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/tunnel6.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/sit.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/tunnel4.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/ip6_tunnel.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/tunnel6.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/ah6.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/esp6.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_LOG.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_rt.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_mh.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_hl.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_ah.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_HL.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_ipv6header.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6table_mangle.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_owner.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_REJECT.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_hbh.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6table_raw.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6table_filter.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_frag.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6_queue.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv6/netfilter/ip6t_eui64.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/ipcomp6.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/xfrm6_tunnel.ko /lib/modules/2.6.24.5/kernel/net/ipv6/tunnel6.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/tunnel6.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv6/xfrm6_mode_beet.ko: /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/ipip.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/tunnel4.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/ipcomp.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/tcp_westwood.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/ah4.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/esp4.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/iptable_raw.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ip_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_TTL.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/iptable_nat.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ip_tables.ko /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_conntrack_ipv4.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_TOS.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_MASQUERADE.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_owner.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_SAME.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/iptable_mangle.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ip_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_iprange.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/arptable_filter.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/arp_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_LOG.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat_h323.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_h323.ko /lib/modules/2.6.24.5/kernel/net/ipv6/ipv6.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat_snmp_basic.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_ECN.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_NETMAP.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/iptable_filter.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ip_tables.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_REJECT.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_ttl.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_tos.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_CLUSTERIP.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/arpt_mangle.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_REDIRECT.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_ULOG.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat_irc.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_irc.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_conntrack_ipv4.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat_ftp.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack_ftp.ko /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_recent.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ip_tables.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ip_queue.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/arp_tables.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_ecn.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_ah.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/nf_nat.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/nf_conntrack.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/netfilter/ipt_addrtype.ko: /lib/modules/2.6.24.5/kernel/net/netfilter/x_tables.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/tunnel4.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/xfrm4_tunnel.ko: /lib/modules/2.6.24.5/kernel/net/ipv4/tunnel4.ko
+/lib/modules/2.6.24.5/kernel/net/ipv4/ip_gre.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/tcp_bic.ko:
+/lib/modules/2.6.24.5/kernel/net/ipv4/tcp_htcp.ko:
+/lib/modules/2.6.24.5/kernel/net/llc/llc.ko:
+/lib/modules/2.6.24.5/kernel/net/key/af_key.ko:
+/lib/modules/2.6.24.5/kernel/net/802/psnap.ko: /lib/modules/2.6.24.5/kernel/net/llc/llc.ko
+/lib/modules/2.6.24.5/kernel/net/802/p8022.ko: /lib/modules/2.6.24.5/kernel/net/llc/llc.ko
+/lib/modules/2.6.24.5/kernel/lib/zlib_deflate/zlib_deflate.ko:
+/lib/modules/2.6.24.5/kernel/lib/ts_kmp.ko:
+/lib/modules/2.6.24.5/kernel/lib/ts_fsm.ko:
+/lib/modules/2.6.24.5/kernel/lib/libcrc32c.ko:
+/lib/modules/2.6.24.5/kernel/lib/ts_bm.ko:
+/lib/modules/2.6.24.5/kernel/fs/hfsplus/hfsplus.ko:
+/lib/modules/2.6.24.5/kernel/fs/binfmt_misc.ko:
+/lib/modules/2.6.24.5/kernel/fs/smbfs/smbfs.ko:
+/lib/modules/2.6.24.5/kernel/fs/msdos/msdos.ko: /lib/modules/2.6.24.5/kernel/fs/fat/fat.ko
+/lib/modules/2.6.24.5/kernel/fs/lockd/lockd.ko: /lib/modules/2.6.24.5/kernel/net/sunrpc/sunrpc.ko
+/lib/modules/2.6.24.5/kernel/fs/nfs_common/nfs_acl.ko: /lib/modules/2.6.24.5/kernel/net/sunrpc/sunrpc.ko
+/lib/modules/2.6.24.5/kernel/fs/exportfs/exportfs.ko:
+/lib/modules/2.6.24.5/kernel/fs/vfat/vfat.ko: /lib/modules/2.6.24.5/kernel/fs/fat/fat.ko
+/lib/modules/2.6.24.5/kernel/fs/nfsd/nfsd.ko: /lib/modules/2.6.24.5/kernel/fs/lockd/lockd.ko /lib/modules/2.6.24.5/kernel/fs/nfs_common/nfs_acl.ko /lib/modules/2.6.24.5/kernel/net/sunrpc/sunrpc.ko /lib/modules/2.6.24.5/kernel/fs/exportfs/exportfs.ko
+/lib/modules/2.6.24.5/kernel/fs/fuse/fuse.ko:
+/lib/modules/2.6.24.5/kernel/fs/cifs/cifs.ko:
+/lib/modules/2.6.24.5/kernel/fs/udf/udf.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-9.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-7.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-6.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-5.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-4.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-3.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-2.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-1.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_koi8-u.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_koi8-r.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp1255.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp1251.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp1250.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_utf8.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-15.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-14.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_iso8859-13.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp950.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp949.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp936.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp932.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp874.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp869.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp866.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp865.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp864.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp863.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp862.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp861.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp860.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp857.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp855.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp852.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp850.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp775.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp737.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_cp437.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_ascii.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_euc-jp.ko:
+/lib/modules/2.6.24.5/kernel/fs/nls/nls_koi8-ru.ko:
+/lib/modules/2.6.24.5/kernel/fs/nfs/nfs.ko: /lib/modules/2.6.24.5/kernel/fs/lockd/lockd.ko /lib/modules/2.6.24.5/kernel/fs/nfs_common/nfs_acl.ko /lib/modules/2.6.24.5/kernel/net/sunrpc/sunrpc.ko
+/lib/modules/2.6.24.5/kernel/fs/jfs/jfs.ko:
+/lib/modules/2.6.24.5/kernel/fs/hfs/hfs.ko:
+/lib/modules/2.6.24.5/kernel/fs/fat/fat.ko:

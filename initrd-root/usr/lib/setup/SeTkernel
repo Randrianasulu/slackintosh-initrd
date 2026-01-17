@@ -1,0 +1,157 @@
+#!/bin/sh
+# Configure Yaboot
+#
+# (C) 2005-2006 Adrian Ulrich
+#
+TMP=/var/log/setup/tmp
+
+ROOT_DEVICE=`df /mnt | tail -1 | awk '{ print $1 }'`
+BOOT_DEVICE=`df /mnt/boot | tail -1 | awk '{ print $1 }'`
+
+# Ugly hack to get the correct OpenFirmware path to our /boot device
+echo "/bin/mount -t proc proc /proc ; /bin/mount -t sysfs sys /sys ; /usr/sbin/ofpath $BOOT_DEVICE ; /bin/umount /proc ; /bin/umount /sys" > /mnt/uglyYaboot
+/bin/chmod +x /mnt/uglyYaboot
+YBROOT=`/bin/chroot /mnt /uglyYaboot | awk -F: '{print $2}'`
+YBDEV=`/bin/chroot /mnt /uglyYaboot | awk -F: '{print $1}'`
+rm /mnt/uglyYaboot
+###############################################################################
+
+
+if [ "X$ROOT_DEVICE" != "X$BOOT_DEVICE" ]; then
+  # If /boot is a separate partition, the kernel location
+  # is relative to the root of the partition
+  KERNEL=/vmlinux
+else
+  # Here's the default kernel install location:
+  KERNEL=/boot/vmlinux
+fi
+
+OSX=`fdisk -l | grep "HFS$" | grep -v "CDROM" | tail -1 | awk '{ print $1 }'`
+BOOTSTRAP=`fdisk -l | grep "Apple_Bootstrap" | grep "NewWorld" | tail -1 | awk '{ print $1 }'`
+
+if [ "X$YBROOT" == "X" ]; then
+ dialog --title "Error" --msgbox \
+ "Unable to find a NewWorld bootblock\n\
+You need to create a bootblock using mac-fdisk\n\
+or you'll be unable to boot your new system!\n"\
+ 10 70
+exit
+fi
+
+
+dialog --title "Yaboot configuration settings" --msgbox \
+"OSX:           $OSX\n\
+KERNEL:        $KERNEL\n\
+BOOTSTRAP:     $BOOTSTRAP\n\
+ROOT_DEVICE:   $ROOT_DEVICE\n\
+BOOT_DEVICE:   $BOOT_DEVICE\n\
+YBROOT:        $YBROOT\n\
+YBDEV:         $YBDEV" \
+15 70
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+
+rm -f $TMP/YaB00t $TMP/tmpscript
+cat << EOF > $TMP/tmpscript
+dialog --title "Yaboot Configuration" --checklist \\
+ "I will install Yaboot on $BOOTSTRAP, you can now configure some options" \\
+ 16 70 6 \\
+ "O" "Include OpenFirmware option" off \\
+ "N" "Include Network boot option" on \\
+ "C" "Include CD Boot option" on \\
+EOF
+
+if [ ! "X$OSX" = "X" ]; then
+cat << EOF >> $TMP/tmpscript
+ "X" "Include OSX Boot option ($OSX)" on \\
+EOF
+fi
+
+cat << EOF >> $TMP/tmpscript
+ 2> $TMP/YaB00t
+EOF
+
+while [ 0 ]; do
+. $TMP/tmpscript
+if [ ! $? = 0 ]; then
+ dialog --msgbox "Configuration aborted.\n\
+ *HINT*: chroot into /mnt , mount /proc and /sys,\n\
+ edit /etc/yaboot.conf and run ybin"\
+ 10 70
+ break
+fi
+
+# Write the yaboot configuration
+cat << EOF > $TMP/tmpyb
+#Yaboot configuration
+init-message="Slackintosh 12.1  **NOTE** Use 'linux-failsave' if your screen flashes after booting"
+boot=$BOOTSTRAP
+device=$YBDEV:
+partition=$YBROOT
+delay=10
+timeout=40
+install=/usr/lib/yaboot/yaboot
+magicboot=/usr/lib/yaboot/ofboot
+
+EOF
+
+
+grep C $TMP/YaB00t > /dev/null
+if [ $? = 0 ]; then
+ echo "enablecdboot" >> $TMP/tmpyb
+fi
+
+grep O $TMP/YaB00t > /dev/null
+if [ $? = 0 ]; then
+ echo "enableofboot" >> $TMP/tmpyb
+fi
+
+grep N $TMP/YaB00t > /dev/null
+if [ $? = 0 ]; then
+ echo "enablenetboot" >> $TMP/tmpyb
+fi
+
+if [ ! "X$OSX" = "X" ]; then
+ grep X $TMP/YaB00t > /dev/null
+ if [ $? = 0 ]; then
+ echo "macosx=$OSX" >> $TMP/tmpyb
+ fi
+fi
+
+cat << EOF >> $TMP/tmpyb
+
+## Kernel Image
+image=$KERNEL
+  label=linux
+  root=$ROOT_DEVICE
+  read-only
+
+image=$KERNEL
+  label=linux-failsave
+  root=$ROOT_DEVICE
+  append="video=ofonly"
+  read-only
+
+EOF
+
+# Write install script into /mnt/tmp/chrootme
+cat << EOF >> /mnt/tmp/chrootme
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+echo y|mkofboot
+ybin -v
+echo "** YaBoot Installation finished"
+echo "** Hit ENTER to continue"
+read
+exit
+EOF
+chmod +x /mnt/tmp/chrootme
+
+echo "Starting Yaboot installation on $BOOTSTRAP ..."
+cp $TMP/tmpyb /mnt/etc/yaboot.conf
+chroot /mnt /tmp/chrootme
+rm /mnt/tmp/chrootme
+break
+done
