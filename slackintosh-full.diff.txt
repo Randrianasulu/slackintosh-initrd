@@ -1,0 +1,2112 @@
+diff -Nur x86/setup/FDhelp ppc/setup/FDhelp
+--- x86/setup/FDhelp	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/FDhelp	2005-04-07 00:20:28.000000000 +0400
+@@ -1,5 +1,5 @@
+ 
+-Slackware Linux Help
++Slackintosh Linux Help
+ ____________________
+ 
+ First, a little help on help.  Whenever you encounter a text
+@@ -47,7 +47,7 @@
+ 
+ A useful trick is to log into the second virtual console during the
+ installation.  Then you can use commands such as 'df' to check how
+-full your hard drive is getting.  Also, once the Slackware CD-ROM
++full your hard drive is getting.  Also, once the Slackintosh CD-ROM
+ has been mounted on /cdrom, most of the commands in the disc's live
+ filesystem will be usable.
+ 
+@@ -55,19 +55,19 @@
+ PARTITIONING YOUR DRIVE
+ 
+ Now lets take a look at how you progress through a typical Linux
+-installation with the Slackware distribution.  First, you'll have
++installation with the Slackintosh distribution.  First, you'll have
+ to make sure your hard drive has been partitioned to accept Linux.
+ The setup program does not do this for you.
+ 
+ You will need at least one type Linux partition, and optionally a
+ swap partition.  In my opinion, (if you have a fair amount of drive
+ space) it's easiest to manage a system that's partitioned along these
+-lines (ignoring any Windows or other partitions for the purposes
++lines (ignoring any DOS or Boot Manager partitions for the purposes
+ of this illustration):
+ 
+-    [ 6 gig or more for / ] 
++    [ 2 gig or more for / ] 
+     [ whatever space users need for /home ]
+-    [ swap space (match the size of your RAM) ]
++    [ swap space (128 MB) ]
+ 
+ Some people like a separate partition for /usr/local, but I find that
+ I usually regret dividing my free space when I don't have to... the
+@@ -76,26 +76,24 @@
+ /usr/local regardless of whether it occupies its own partition.  In
+ fact, having a separate /home partition is also optional.  Probably the
+ simplest way to approach things initially is with just a single root
+-Linux partition, and a swap partition of about 1-2 gigabytes.
++Linux partition, and a swap partition of about 128 megabytes.
+ 
+ The amount of drive space you'll want to give Linux depends on what 
+ software you plan to install, and how much space you have to spare. 
+-My primary Linux partition is 10 gigabytes.  If you've got that
++My primary Linux partition is 4 gigabytes.  If you've got that
+ kind of room to spare, it will make it easier to compile and try out
+ large pieces of software, or to work with large files such as might be
+ used in desktop publishing or CD-ROM mastering applications.
+ 
+-The entire Slackware system (everything -- all the X servers, Emacs,
+-the works) will use about 5 gigabytes of hard drive space,
+-so 5 - 10 gigs is sufficient for a complete installation.
++The entire Slackintosh system (everything -- all the X servers, Emacs,
++the works) will use a little more than one gigabyte of hard drive space,
++so 1.5 - 2 gigs is sufficient for a complete installation.
+ 
+ In the past, I've actually done development work on a single / 
+ partition of 110 MB.  (Of course, that was back in the days of Linux
+ version 0.99p11 or so...)  Still, with careful selection you can still
+-squeeze a small Linux system onto a system, but this is not recommended
+-for beginners.  It's more useful when utilizing Slackware as a base for
+-an embedded system.  Most people should be going a full installation.
+-It's faster and easier, and less error-prone.
++squeeze a small Linux system onto a Zip disk.  (In fact, we do
++exactly that with "ZipSlack")
+ 
+ Partitioning is done with a partitioning tool such as fdisk.  There are
+ two versions of Linux fdisk available now.  'fdisk' is the standard
+@@ -103,15 +101,20 @@
+ people will probably want to use 'cfdisk' now, unless they're used
+ to the older version (like me).  Either one will get the job done.
+ 
+-Make sure you use Linux fdisk to tag partitions as type 83 (Linux, the
+-default) or type 82 (Linux swap) so the Slackware setup program will 
+-recognize them.  Use the 't' command for that, and 'w' to write out the
+-changes.
+-
+-If you prefer an easy to use graphical partitioning tool, you can make
+-all your Linux partitions directly from Linux 'cfdisk'.  Or you can
+-make them with the older 'fdisk' using the 'n' command to create a
+-partition and the 'w' command to write out the changes when you're done. 
++If you're using OS/2's Boot Manager, you'll want to create your Linux
++partitions with OS/2 fdisk or Partition Magic (which also includes
++the same Boot Manager program) and format them under DOS or OS/2.
++This seems to make Boot Manager boot Linux partitions more reliably.
++Otherwise, Boot Manager might refuse to boot your root Linux partition,
++giving you a "Selected partition is not formatted" error.  Make sure
++you use Linux fdisk to tag them as type 83 (Linux) or type 82
++(Linux swap) or the Slackintosh setup program will not recognize them.
++Use the 't' command for that, and 'w' to write out the changes.
++
++If you're not using the OS/2 Boot Manager, you can make all your Linux
++partitions directly from Linux 'cfdisk'.  Or you can make them with the
++older 'fdisk' using the 'n' command to create a partition and the 'w'
++command to write out the changes when you're done. 
+ 
+ By default, 'fdisk' and 'cfdisk' will partition the first hard drive in
+ your machine.  On machines with IDE, this will be /dev/hda.  On machines
+@@ -127,22 +130,23 @@
+ learned how to activate a swap partition just to make it this far.
+ Normally you won't need to format or activate your swap space by
+ hand, but if you're installing on a machine with low memory you will
+-need to format and activate a swap partition to be able to install. 
++need to format and activate a swap partition of 4 (or preferably 
++more, anywhere up to about 64) megabytes to be able to install. 
+ Once you've made the partition with fdisk, you need to use 'mkswap'
+ on it, and then activate it with 'swapon'.  Checking the partition
+ table with 'fdisk -l', we see these lines:
+ 
+-   Device Boot      Start         End      Blocks   Id  System
+-/dev/hda8           16650       16898     2000061   82  Linux swap
++   Device Boot  Begin   Start     End  Blocks   Id  System
++/dev/hdb2         922     922     966   11160   82  Linux swap
+ 
+ So, the command to format would be:
+ 
+-  # mkswap /dev/hda8
++  # mkswap /dev/hdb2
+   # sync
+ 
+ And to activate it:
+ 
+-  # swapon /dev/hda8
++  # swapon /dev/hdb2
+ 
+ RUNNING THE SETUP PROGRAM
+ 
+@@ -153,11 +157,11 @@
+ these options in order:
+ 
+ ADDSWAP   (set up my swapspace)
+-TARGET    (set up my Linux/Windows partitions and /etc/fstab)
+-SOURCE    (select the source location for the Slackware Linux
++TARGET    (set up my Linux partitions and /etc/fstab)
++SOURCE    (select the source location for the Slackintosh Linux
+            packages)
+ SELECT    (pick the package categories to install)
+-INSTALL   (install the software, generally with "full")
++INSTALL   (install the software)
+ CONFIGURE (configure the newly installed system)
+ 
+ Note that after I select the SWAP option, setup will allow me to
+@@ -176,13 +180,9 @@
+ 
+ ...WHEN YOU'RE DONE:
+ 
+-
+-EXIT: This leaves Slackware Linux setup.
++EXIT: This leaves Slackintosh Linux setup.
+ 
+ 
+ Have fun installing and running Linux!
+ 
+ ---
+-Patrick Volkerding
+-volkerdi@slackware.com
+-
+diff -Nur x86/setup/INSCD ppc/setup/INSCD
+--- x86/setup/INSCD	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/INSCD	2006-10-01 13:20:11.000000000 +0400
+@@ -10,7 +10,7 @@
+ rm -f $TMP/SeTmount $TMP/SeTDS $TMP/SeTCDdev $TMP/reply
+ 
+ dialog --title "SCANNING FOR CD or DVD DRIVE" --menu \
+-"Make sure the Slackware disc is in your CD/DVD drive, \
++"Make sure the Slackintosh disc is in your CD/DVD drive, \
+ and then press ENTER to begin the scanning process. \
+ Or, if you'd rather specify the device name manually \
+ (experts only), choose that option below." \
+@@ -70,7 +70,7 @@
+  if [ "$REPLY" = "custom" ]; then
+   dialog --title "ENTER CD/DVD DEVICE MANUALLY" --inputbox \
+ "Please enter the name of the CD/DVD device (such as /dev/hdc) that \
+-you wish to use to mount the Slackware CD/DVD:" \
++you wish to use to mount the Slackintosh CD/DVD:" \
+ 9 70 2> $TMP/reply
+   if [ ! -r $TMP/reply ]; then
+    # cancel or esc
+@@ -118,7 +118,7 @@
+ if [ "$DRIVE_FOUND" = "" ]; then
+ 
+  dialog --title "SCANNING" --infobox "Scanning for an IDE \
+-CD/DVD drive containing a Slackware disc..." 4 56
++CD/DVD drive containing a Slackintosh disc..." 4 56
+  sleep 3
+  for device in \
+   /dev/hdd /dev/hdc /dev/hdb /dev/hda \
+@@ -138,7 +138,7 @@
+ # Search for SCSI CD/DVD drives:
+ if [ "$DRIVE_FOUND" = "" ]; then
+  dialog --title "SCANNING" --infobox "Scanning for a SCSI \
+-CD/DVD drive containing a Slackware disc..." 4 50
++CD/DVD drive containing a Slackintosh disc..." 4 50
+  sleep 3
+  for device in \
+   /dev/sr0 /dev/sr1 /dev/sr2 /dev/sr3 \
+@@ -155,7 +155,7 @@
+ # Search for parallel port ATAPI CD/DVD drives:
+ if [ "$DRIVE_FOUND" = "" ]; then
+  dialog --title "SCANNING" --infobox "Scanning for a parallel port \
+-ATAPI CD/DVD drive containing a Slackware disc..." 4 52
++ATAPI CD/DVD drive containing a Slackintosh disc..." 4 52
+  sleep 3
+  for device in \
+   /dev/pcd0 /dev/pcd1 /dev/pcd2 /dev/pcd3 \
+@@ -200,7 +200,7 @@
+  "A CD/DVD drive could not be found on any of the devices that were \
+ scanned.  Possible reasons include using a bootdisk or kernel that \
+ doesn't support your drive, failing to pass parameters needed by some \
+-drives to the kernel, not having the Slackware disc in your CD/DVD \
++drives to the kernel, not having the Slackintosh disc in your CD/DVD \
+ drive, or using a drive connected to a Plug and Play soundcard (in this \
+ case, connecting the drive directly to the IDE interface often helps). \
+ Please make sure you are using the correct bootdisk for your hardware, \
+@@ -220,7 +220,7 @@
+  mount -o ro -t iso9660 $DRIVE_FOUND /var/log/mount 1> $RDIR 2> $RDIR
+  if [ $? = 0 ]; then # mounted successfully
+   dialog --title "CD/DVD DRIVE FOUND" --sleep 3 --infobox \
+-  "A Slackware disc was found in device $DRIVE_FOUND." 3 52
++  "A Slackintosh disc was found in device $DRIVE_FOUND." 3 52
+   break
+  else # failed to mount
+   dialog --title "MOUNT ERROR" --menu "There was an error \
+@@ -265,7 +265,7 @@
+ ( cd $T_PX/dev ; ln -sf $DRIVE_FOUND cdrom )
+ 
+ # Pass information about the source directory to the next install stage:
+-echo "/var/log/mount/slackware" > $TMP/SeTDS
++echo "/var/log/mount/slackintosh" > $TMP/SeTDS
+ echo "-source_mounted" > $TMP/SeTmount
+ echo "$DRIVE_FOUND" > $TMP/SeTCDdev
+ echo "/dev/null" > $TMP/SeTsource
+diff -Nur x86/setup/INSNFS ppc/setup/INSNFS
+--- x86/setup/INSNFS	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/INSNFS	2007-07-09 18:52:41.000000000 +0400
+@@ -3,17 +3,78 @@
+ if [ ! -d $TMP ]; then
+   mkdir -p $TMP
+ fi
+-if [ -f $TMP/Punattended ]; then
+- eval $(grep "^NFS_SERVER=" $TMP/Punattended)
+- eval $(grep "^NFS_ROOT=" $TMP/Punattended)
+-fi
+-
+ while [ 0 ]; do
+  rm -f $TMP/SeTDS $TMP/SeTmount
+- UPNRUN=`cat $TMP/SeTupnrun`
++ T_PX="`cat $TMP/SeTT_PX`"
++ UPNRUN=1
++ if [ "$T_PX" = "/" ]; then
++  cat << EOF > $TMP/tempmsg
++
++You're running off the hard drive filesystem. Is this machine
++currently running on the network you plan to install from? If
++so, we won't try to reconfigure your ethernet card.
++
++Are you up-and-running on the network?
++EOF
++  dialog --title "NFS INSTALLATION" --yesno "`cat $TMP/tempmsg`" 11 68
++  UPNRUN=$?
++ fi
++ if [ $UPNRUN = 1 ]; then
++  cat << EOF > $TMP/tempmsg
+ 
+- if [ "$REMOTE_IPADDR" = "" ]; then REMOTE_IPADDR=${NFS_SERVER}; fi
+- if [ "$REMOTE_PATH" = "" ]; then REMOTE_PATH=${NFS_ROOT}; fi
++You will need to enter the IP address you wish to
++assign to this machine. Example: 111.112.113.114
++
++What is your IP address?
++EOF
++  dialog --title "ASSIGN IP ADDRESS" --inputbox "`cat $TMP/tempmsg`" 12 \
++  65 $LOCAL_IPADDR 2> $TMP/local
++  if [ ! $? = 0 ]; then
++   rm -f $TMP/tempmsg $TMP/local
++   exit
++  fi
++  LOCAL_IPADDR="`cat $TMP/local`"
++  rm -f $TMP/local
++  cat << EOF > $TMP/tempmsg
++
++Now we need to know your netmask.
++Typically this will be 255.255.255.0
++but this can be different depending on
++your local setup.
++
++What is your netmask?
++EOF
++  if [ "$LOCAL_NETMASK" = "" ]; then # assign default
++    LOCAL_NETMASK=255.255.255.0
++  fi
++  dialog --title "ASSIGN NETMASK" --inputbox "`cat $TMP/tempmsg`" 14 \
++  65 $LOCAL_NETMASK 2> $TMP/mask
++  if [ ! $? = 0 ]; then
++   rm -f $TMP/tempmsg $TMP/mask
++   exit
++  fi
++  LOCAL_NETMASK="`cat $TMP/mask`"
++  rm $TMP/mask
++  # Broadcast and network are derived from IP and netmask:
++  LOCAL_BROADCAST=`ipmask $LOCAL_NETMASK $LOCAL_IPADDR | cut -f 1 -d ' '`
++  LOCAL_NETWORK=`ipmask $LOCAL_NETMASK $LOCAL_IPADDR | cut -f 2 -d ' '`
++  dialog --yesno "Do you have a gateway?" 5 30
++  HAVE_GATEWAY=$?
++  if [ "$HAVE_GATEWAY" = "0" ]; then
++   if [ "$LOCAL_GATEWAY" = "" ]; then
++    LOCAL_GATEWAY="`echo $LOCAL_IPADDR | cut -f1-3 -d '.'`."
++   fi
++   dialog --title "ASSIGN GATEWAY ADDRESS" --inputbox \
++   "\nWhat is the IP address for your gateway?" 9 65 \
++   $LOCAL_GATEWAY 2> $TMP/gw
++   if [ ! $? = 0 ]; then
++    rm -f $TMP/tempmsg $TMP/gw
++    exit
++   fi
++   LOCAL_GATEWAY="`cat $TMP/gw`"
++   rm -f $TMP/gw
++  fi
++ fi # ! UPNRUN
+ 
+  cat << EOF > $TMP/tempmsg
+ 
+@@ -39,6 +100,9 @@
+  fi
+  REMOTE_IPADDR="`cat $TMP/remote`"
+  rm $TMP/remote
++ if [ ! "$UPNRUN" = "0" ]; then
++   ENET_DEVICE="eth0" 
++ fi # ! UPNRUN
+ 
+  cat << EOF > $TMP/tempmsg
+ 
+@@ -48,7 +112,7 @@
+  The installation script needs to know the name of the 
+  directory on your server that contains the series
+  subdirectories. For example, if your A series is found at 
+- /slack/slackware/a, then you would respond: /slack/slackware
++ /slack/slackintosh/a, then you would respond: /slack/slackintosh
+  
+  What is the Slackware source directory?
+ EOF
+@@ -66,6 +130,18 @@
+  echo "We'll switch into text mode here so you can see if you have any errors."
+  echo
+  if [ ! "$UPNRUN" = "0" ]; then
++  echo "Configuring ethernet card..."
++  ifconfig $ENET_DEVICE $LOCAL_IPADDR netmask $LOCAL_NETMASK broadcast $LOCAL_BROADCAST
++  # Older kernel versions need these to set up the eth0 routing table.
++  KVERSION=`uname -r | cut -f 1,2 -d .`
++  if [ "$KVERSION" = "1.0" -o "$KVERSION" = "1.1" \
++   -o "$KVERSION" = "1.2" -o "$KVERSION" = "2.0" -o "$KVERSION" = "" ]; then
++   /sbin/route add -net ${LOCAL_NETWORK} netmask ${LOCAL_NETMASK} eth0
++  fi
++  if [ "$HAVE_GATEWAY" = "0" ]; then
++   echo "Configuring your gateway..."
++   route add default gw $LOCAL_GATEWAY metric 1
++  fi
+   if [ -x /sbin/rpc.portmap ]; then
+    echo "Running /sbin/rpc.portmap..."
+    /sbin/rpc.portmap
+@@ -86,11 +162,11 @@
+   echo "mount -r -t nfs -o nolock $REMOTE_IPADDR:$REMOTE_PATH /var/log/mount"
+   mount -r -t nfs -o nolock $REMOTE_IPADDR:$REMOTE_PATH /var/log/mount
+   if [ ! $? = 0 ]; then
+-   echo "Didn't work either. Maybe you should check the correctness of the directoryname?" 
++   exit $?
+   fi
+   echo "/var/log/mount" > $TMP/SeTDS
+  else
+-  echo "/var/log/mount/slackware" > $TMP/SeTDS 
++  echo "/var/log/mount/slackintosh" > $TMP/SeTDS 
+  fi
+  echo "-source_mounted" > $TMP/SeTmount
+  echo "/dev/null" > $TMP/SeTsource
+@@ -106,8 +182,11 @@
+  if [ "$TRY_AGAIN" = "n" ]; then
+   break
+  fi
+- #if [ "$UPNRUN" = "1" ]; then
+- # route del $LOCAL_NETWORK
+- # ifconfig $ENET_DEVICE down 
+- #fi
++ if [ "$UPNRUN" = "1" ]; then
++  route del $LOCAL_NETWORK
++  ifconfig $ENET_DEVICE down 
++ fi
+ done
++echo $LOCAL_IPADDR > $TMP/SeTIP
++echo $LOCAL_NETMASK > $TMP/SeTnetmask
++echo $LOCAL_GATEWAY > $TMP/SeTgateway
+diff -Nur x86/setup/INSURL ppc/setup/INSURL
+--- x86/setup/INSURL	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/INSURL	1970-01-01 03:00:00.000000000 +0300
+@@ -1,216 +0,0 @@
+-#!/bin/sh
+-TMP=/var/log/setup/tmp
+-if [ ! -d $TMP ]; then
+-  mkdir -p $TMP
+-fi
+-if [ -f $TMP/Punattended ]; then
+- eval $(grep "^REMOTE_URL=" $TMP/Punattended)
+- eval $(grep "^REMOTE_ROOT=" $TMP/Punattended)
+-fi
+-
+-# Helper function:
+-package_name() {
+-  STRING=`basename $1 .tgz`
+-  # Check for old style package name with one segment:
+-  if [ "`echo $STRING | cut -f 1 -d -`" = "`echo $STRING | cut -f 2 -d -`" ]; then
+-    echo $STRING
+-  else # has more than one dash delimited segment
+-    # Count number of segments:
+-    INDEX=1
+-    while [ ! "`echo $STRING | cut -f $INDEX -d -`" = "" ]; do
+-      INDEX=`expr $INDEX + 1`
+-    done
+-    INDEX=`expr $INDEX - 1` # don't include the null value
+-    # If we don't have four segments, return the old-style (or out of spec) package name:
+-    if [ "$INDEX" = "2" -o "$INDEX" = "3" ]; then
+-      echo $STRING
+-    else # we have four or more segments, so we'll consider this a new-style name:
+-      NAME=`expr $INDEX - 3`
+-      NAME="`echo $STRING | cut -f 1-$NAME -d -`"
+-      echo $NAME
+-    fi
+-  fi
+-}
+-
+-while [ 0 ]; do
+- rm -f $TMP/SeTDS $TMP/SeTmount
+- UPNRUN=`cat $TMP/SeTupnrun`
+-
+- cat << EOF > $TMP/tempmsg
+-
+-Good! We're all set on the local end, but now we need to know
+-where to find the software packages to install. First, we need
+-the URL of the ftp or http server where the Slackware sources
+-are stored.
+-URL examples are: 'ftp://192.168.0.1' ; 'http://172.16.10.31'
+-
+-EOF
+- if [ "$UPNRUN" = "0" ]; then
+-  cat << EOF >> $TMP/tempmsg
+-Since you're already running on the network, you should be able
+-to use the hostname instead of an IP address if you wish.
+-
+-EOF
+- fi
+- echo "What is the URL of your FTP/HTTP server? " >> $TMP/tempmsg
+- dialog --title "ENTER URL OF FTP/HTTP SERVER" --inputbox \
+- "`cat $TMP/tempmsg`" 15 70 $REMOTE_URL 2> $TMP/remote
+- if [ ! $? = 0 ]; then
+-  rm -f $TMP/tempmsg $TMP/remote
+-  exit
+- fi
+- REMOTE_URL="`cat $TMP/remote`"
+- rm $TMP/remote
+-
+- cat << EOF > $TMP/tempmsg
+-
+- There must be a directory on the server with the Slackware
+- packages and files arranged in a tree like the FTP site.
+-
+- The installation script needs to know the name of the 
+- directory on your server that contains the series
+- subdirectories. For example, if your A series is found at 
+- /slack/slackware/a, then you would respond: /slack/slackware
+- 
+- What is the Slackware source directory?
+-EOF
+- dialog --title "SELECT SOURCE DIRECTORY" --inputbox "`cat $TMP/tempmsg`" \
+- 17 65 $REMOTE_PATH 2> $TMP/slacksrc
+- if [ ! $? = 0 ]; then
+-  rm -f $TMP/tempmsg $TMP/slacksrc
+-  exit
+- fi
+- REMOTE_PATH="`cat $TMP/slacksrc`"
+- rm $TMP/slacksrc
+-
+- cat << EOF > $TMP/tempmsg
+-
+-In the next screen you should watch for possible errors.
+-
+-First, we'll download the PACKAGES.TXT from the parent of the
+-directory that you entered before (which should be the root
+-of the remote Slackware tree).  If that succeeds, then we use
+-PACKAGES.TXT to reconstruct a local cache of the package tree
+-(should take a minute or less on an average system).
+-After that, we're all set to go!
+-
+-Downloading PACKAGES.TXT at the Slackware root starts
+-after you press OK.
+-That file is several hundreds of KB in size so it may
+-take some time to get here...
+-
+-EOF
+- dialog --title "DOWNLOAD INFORMATION" --msgbox "`cat $TMP/tempmsg`" 20 70
+- rm -f $TMP/tempmsg
+-
+- REMOTE_ROOT=$(dirname $REMOTE_PATH)
+- mkdir -p $TMP/treecache 2>/dev/null
+- chmod 700 $TMP/treecache
+- rm -rf $TMP/treecache/* 2>/dev/null
+- ln -sf $TMP/treecache /var/log/mount/
+- cd /var/log/mount/treecache
+- echo "Downloading PACKAGES.TXT ..." >> $TMP/wgetout
+- echo "URL: $REMOTE_URL$REMOTE_ROOT" > $TMP/wgetout
+- wget -q $REMOTE_URL$REMOTE_ROOT/PACKAGES.TXT > /dev/null 2>&1
+- RET=$?
+- if [ $RET != 0 ]; then
+-  echo "> Download failed. Going to try one directory lower." >> $TMP/wgetout
+-  REMOTE_ROOT=$REMOTE_PATH
+-  echo "URL: $REMOTE_URL$REMOTE_ROOT" >> $TMP/wgetout
+-  wget -q $REMOTE_URL$REMOTE_ROOT/PACKAGES.TXT > /dev/null 2>&1
+-  RET=$?
+-  [ $RET != 0 ] && echo "> Download failed again." >> $TMP/wgetout
+- fi
+- echo "" >> $TMP/wgetout
+-
+- if [ -r /var/log/mount/treecache/PACKAGES.TXT ]; then
+-  if head /var/log/mount/treecache/PACKAGES.TXT | grep -q "PACKAGES.TXT" ; then
+-   echo "A Slackware 'PACKAGES.TXT' is available. Ready to continue!" >> $TMP/wgetout
+-   DEFANSW="no"
+-  fi
+- else
+-  echo "No file 'PACKAGES.TXT' was found. Wrong URL?" >> $TMP/wgetout
+-  DEFANSW="yes"
+- fi
+- echo "" >> $TMP/wgetout
+- echo "Do you want to try setting up FTP/HTTP again?" >> $TMP/wgetout
+- echo "" >> $TMP/wgetout
+- if [ "$DEFANSW" = "no" ]; then
+-  dialog --title "DOWNLOAD RESULT" \
+-    --defaultno --yesno "`cat $TMP/wgetout`" 12 68
+-  RET=$?
+- else
+-  dialog --title "DOWNLOAD RESULT" \
+-    --yesno "`cat $TMP/wgetout`" 12 68
+-  RET=$?
+- fi
+- if [ $RET = 1 ]; then
+-  rm -f $TMP/wgetout
+-  break
+- fi
+- rm -f $TMP/wgetout
+- #if [ "$UPNRUN" = "1" ]; then
+- # route del $LOCAL_NETWORK
+- # ifconfig $ENET_DEVICE down 
+- #fi
+-done
+-
+-if [ -r /var/log/mount/treecache/PACKAGES.TXT ]; then
+- echo "/var/log/mount/treecache/slackware" > $TMP/SeTDS 
+- echo "-source_mounted" > $TMP/SeTmount
+- echo "/dev/null" > $TMP/SeTsource
+- echo "${REMOTE_URL},${REMOTE_ROOT}" > $TMP/SeTremotesvr
+-
+- dialog --title "INITIALIZING PACKAGE TREE" --infobox \
+-  "\nSetting up local cache for the FTP/HTTP server's package tree ..." 5 72
+-
+- mkdir slackware isolinux 2>/dev/null
+- wget -q -P ./isolinux $REMOTE_URL$REMOTE_ROOT/isolinux/setpkg
+-
+- # Create a local package tree with zero-byte package placeholders:
+- NUMPKG=0
+- FIRST1='a'
+- grep "PACKAGE " PACKAGES.TXT | while read REPLY ; do
+-  case "$REPLY" in
+-  "PACKAGE NAME:"*)
+-    TEMP=$(echo $REPLY | cut -d: -f2)
+-    PKGNAME=$(echo $TEMP)
+-    PKGBASE=$(basename $PKGNAME .tgz)
+-    PKGSHRT=$(package_name $PKGNAME)
+-    FIRST2=${FIRST1}
+-    FIRST1=$(echo $PKGNAME | cut -c1)
+-    let NUMPKG=NUMPKG+1
+-    if [ "$FIRST1" != "$FIRST2" ]; then
+-     dialog --title "INITIALIZING PACKAGE TREE" --infobox \
+-      "\nProcessed ${NUMPKG} Slackware packages - [a-$FIRST1]*.tgz ..." 5 65
+-    fi
+-    ;;
+-  "PACKAGE LOCATION:"*)
+-    TEMP=$(echo $REPLY | cut -d: -f2)
+-    PKGDIR=$(echo $TEMP)
+-    mkdir -p $PKGDIR
+-    touch ${PKGDIR}/${PKGNAME}
+-    ;;
+-  "PACKAGE SIZE (compressed):"*)
+-    TEMP=$(echo $REPLY | cut -d: -f2)
+-    PKGSIZE=$(echo $TEMP)
+-    echo "$PKGSIZE" 1> ${PKGDIR}/${PKGBASE}.size
+-    ;;
+-  *)
+-    ;;
+-  esac
+- done
+- 
+- # Make sure we can select stuff from the package series:
+- dialog --title "INITIALIZING PACKAGE TREE" --infobox \
+-  "\nRetrieving tagfile information for the package tree ..." 5 65
+-
+- for series in $(ls -1 slackware) ; do
+-  wget -q -P ./slackware/$series $REMOTE_URL$REMOTE_ROOT/slackware/$series/tagfile
+-  wget -q -P ./slackware/$series $REMOTE_URL$REMOTE_ROOT/slackware/$series/maketag.ez
+-  wget -q -P ./slackware/$series $REMOTE_URL$REMOTE_ROOT/slackware/$series/maketag
+- done
+-else
+- dialog --title "REMOTE SERVER CONFIGURATION" --msgbox \
+-  "\nFailed to configure for installation from remote server." 5 65
+-fi
+diff -Nur x86/setup/INSfd ppc/setup/INSfd
+--- x86/setup/INSfd	1970-01-01 03:00:00.000000000 +0300
++++ ppc/setup/INSfd	2005-04-07 00:20:28.000000000 +0400
+@@ -0,0 +1,28 @@
++#!/bin/sh
++TMP=/var/log/setup/tmp
++if [ ! -d $TMP ]; then
++  mkdir -p $TMP
++fi
++rm -f $TMP/SeTDS $TMP/SeTmount
++cat << EOF > $TMP/tempmsg
++
++The base Slackintosh series (A) can be installed from 1.2M
++or 1.44M media. Most of the other disks will not fit on 
++1.2M media, but can be downloaded to your hard drive and 
++installed from there later.
++
++Which drive do you want to install from?
++EOF
++dialog --title "SELECT FLOPPY DRIVE" --menu "`cat $TMP/tempmsg`" 18 67 4 \
++"/dev/fd0u1440" "1.44M drive a:" \
++"/dev/fd1u1440" "1.44M drive b:" \
++"/dev/fd0h1200" "1.2M drive a:" \
++"/dev/fd1h1200" "1.2M drive b:" 2> $TMP/whichdrv
++if [ ! $? = 0 ]; then
++ rm -f $TMP/whichdrv $TMP/tempmsg
++ exit
++fi
++rm -f $TMP/tempmsg
++mv $TMP/whichdrv $TMP/SeTsource
++echo "" > $TMP/SeTDS
++echo "" > $TMP/SeTmount
+diff -Nur x86/setup/INShd ppc/setup/INShd
+--- x86/setup/INShd	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/INShd	2007-07-09 18:56:37.000000000 +0400
+@@ -24,15 +24,15 @@
+ while [ 0 ]; do
+  cat << EOF > $TMP/tempmsg
+ In order to install directly from the hard disk you must have a
+-partition (such as /dev/hda1, /dev/hdb5, etc) with the Slackware
+-distribution's slackware/ directory like you'd find it on the FTP
++partition (such as /dev/hda1, /dev/hdb5, etc) with the Slackintosh
++distribution's slackintosh/ directory like you'd find it on the FTP
+ site.  It can be in another directory.  For example, if the
+-distribution is in /stuff/slackware/, then you have to have
+-directories named /stuff/slackware/a, /stuff/slackware/ap, and so
++distribution is in /stuff/slackintosh/, then you have to have
++directories named /stuff/slackintosh/a, /stuff/slackintosh/ap, and so
+ on each containing the files that would be in that directory on
+ the FTP site.  You may install from FAT or Linux partitions.
+ 
+-Please enter the partition (such as /dev/hda1) where the Slackware
++Please enter the partition (such as /dev/hda1) where the Slackintosh
+ sources can be found, or [enter] to see a partition list:
+ EOF
+  dialog --title "INSTALLING FROM HARD DISK" --inputbox \
+@@ -53,17 +53,17 @@
+ 
+ dialog --title "SELECT SOURCE DIRECTORY" --inputbox \
+ "Now we need to know the full path on this partition to the\n\
+-slackware/ directory where the directories containing\n\
++slackintosh/ directory where the directories containing\n\
+ installation files and packages to be installed are kept.\n\
+-For example, if you downloaded Slackware into the /stuff\n\
++For example, if you downloaded Slackintosh into the /stuff\n\
+ directory on your hard drive (so that you have the\n\
+-directories /stuff/slackware/a, /stuff/slackware/ap, and so on\n\
++directories /stuff/slackintosh/a, /stuff/slackintosh/ap, and so on\n\
+ each containing the files that would be in that directory on\n\
+ the FTP site), then the full path to enter here would be:\n\
+ \n\
+-      /stuff/slackware\n\
++      /stuff/slackintosh\n\
+ \n\
+-What directory are the Slackware sources in?" \
++What directory are the Slackintosh sources in?" \
+ 19 65 2> $TMP/source.dir
+ if [ ! $? = 0 ]; then
+  rm -f $TMP/source.dir
+diff -Nur x86/setup/PROMPThelp ppc/setup/PROMPThelp
+--- x86/setup/PROMPThelp	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/PROMPThelp	2005-04-07 00:20:28.000000000 +0400
+@@ -31,23 +31,19 @@
+ what gets installed on the machine, but can be tricky for
+ beginners.  
+ 
+-The so-called "newbie" mode will follow a defaults file in
+-the first directory of each series you install that will
+-install some required package automatically, while prompting
+-you about the rest of them, one by one.  This mode of
+-installation _really_ is no longer recommended.  There are
+-so many packages now that the time added to the installation
+-is quite significant, and the chance of accidentally leaving
+-out an important package is high.  If you haven't installed
+-Slackware before, the best thing to do is make sure you have
+-plenty of space and go for a "full" installation.
+-
+-About the "tagfile" files:
+-
+-The package installation defaults are user definable -- you
+-may set any package to be added or skipped automatically by
+-editing your choices into a file called TAGFILE that will be
+-found on the first disk of each series.  The tagfile contains
++If this is your first time installing Linux, you might
++want to use "newbie" mode (even though it takes some 
++extra time).  This will follow a defaults file in the
++first directory of each series you install that will
++ensure that required packages are installed automatically.
++You will be prompted for the installation of other packages.
++
++These defaults are user definable -- you may set any package
++to be added or skipped automatically by editing your choices
++into a file called TAGFILE that will be found on the first
++disk of each series. There will also be a copy of the
++original tagfile called TAGFILE.ORG available in case you
++want to restore the default settings. The tagfile contains
+ all the instructions needed to completely automate your
+ installation. 
+ 
+@@ -57,12 +53,11 @@
+ add software packages from the current directory, or to 
+ cleanly remove packages that you want uninstalled.  Also,
+ command line utilities (installpkg, removepkg, makepkg,
+-etc) are available, and (once learned) more efficient to
+-use.  These are what I use for package management.
++etc) are available.  These are what I use.
+ 
+ If you use tagfiles, you might want to use a custom 
+ tagfile that you have created yourself instead of the
+-default ones that come with Slackware (the ones named
++default ones that come with Slackintosh (the ones named
+ 'tagfile'). For instance, I use custom tagfiles called
+ 'tagfile.pat' that you might see on your disks. :^) You
+ make a custom tagfile by copying the 'tagfile' on the
+@@ -79,5 +74,17 @@
+ with that extension cannot be found, the default tagfile
+ will be used instead.
+ 
++You may also use "tagpath" to provide a path to where your
++custom tagfiles are located. In this case, you do not use
++a custom extension - all your tagfiles will be named
++'tagfile'. You'll provide a directory path such as
++/my/tagfile/path. In this directory will be
++subdirectories for each disk you wish to provide a
++tagfile for. You do not have to provide a
++subdirectory and tagfile for each disk you plan to
++install - if a tagfile is not found at your custom
++tagfile location then the default one in the
++package directory will be used.
++
+ -- End of prompt mode help text
+ 
+diff -Nur x86/setup/SeTDOS ppc/setup/SeTDOS
+--- x86/setup/SeTDOS	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTDOS	2007-07-09 18:57:36.000000000 +0400
+@@ -10,36 +10,10 @@
+ NDIR=/dev/null
+ rm -f $TMP/SeTDOS
+ touch $TMP/SeTDOS
+-
+ crunch () { # remove extra whitespace
+  read STRING;
+  echo $STRING
+ }
+-
+-ntfs_security() {
+-  rm -f $TMP/ntfs_security
+-  dialog --backtitle "Setting permissions on NTFS partition $NEW_DIR" \
+-  --title "SET SECURITY FOR NTFS PARTITION $NEW_DIR" \
+-  --default-item "umask=077" \
+-  --menu "Because users could go snooping through (or destroy, depending on \
+-the settings) your Windows partition, you should choose how much access would you \
+-like your non-root users to have to partition $NEW_DIR.  The access level can \
+-range from no access at all, to read-only for everyone, to read-write access \
+-for every user on the machine.  A reasonable default (read-write for root only) \
+-is chosen, but you may set this any way that you like.  NOTE:  The umask= \
+-filesystem feature is not supported by FAT (just for your information :-)." \
+-18 77 4 \
+-"umask=077" "Root has read/write access, users have no access (ntfs-3g)" \
+-"umask=222" "Everyone has read only access (built-in kernel ntfs driver)" \
+-"umask=022" "Everyone has read access, but only root can write (ntfs-3g)" \
+-"umask=000" "All users can read/write to any file (ntfs-3g)" \
+-2> $TMP/ntfs_security
+-  if [ ! $? = 0 ]; then
+-    rm -f $TMP/ntfs_security $TMP/mount-point $TMP/SeTDOS
+-    echo 1
+-  fi
+-}
+-
+ DOSLIST="`probe -l 2> /dev/null | grep "DOS
+ Win95 F
+ Win98 F
+@@ -114,30 +88,12 @@
+  elif [ "$DOS_PART" = "(IN USE)" ]; then
+   continue
+  fi
+- if echo "$DOSLIST" | grep -w $DOS_PART | grep NTFS 1> $NDIR 2> $NDIR ; then
+-   ntfs_security
+-   FS_UMASK="$(cat $TMP/ntfs_security)"
+-   if [ "$FS_UMASK" = "1" ]; then
+-     exit 1
+-   else
+-     if [ "$FS_UMASK" = "umask=222" ]; then
+-       FS_TYPE=ntfs
+-       FS_UMASK=defaults
+-     else
+-       FS_TYPE=ntfs-3g
+-     fi
+-   fi
+- else
+-   FS_TYPE=vfat
+-   FS_UMASK=defaults
+- fi
+  dialog --backtitle "Selecting a location to mount $DOS_PART." \
+  --title "PICK MOUNT POINT FOR $DOS_PART" \
+  --inputbox "Now this partition must be mounted somewhere in your \
+  directory tree.  Please enter the directory under which \
+  you would like to put it.  For instance, you might want to \
+- enter /fat-c or /fat-d or something similar.  \
+- NOTE: This \
++ enter /fat-c or /fat-d or something similar.  NOTE: This \
+  partition won't actually be mounted until you reboot.  \
+  Where would you like to mount $DOS_PART?" \
+  13 65 2> $TMP/mount-point
+@@ -157,9 +113,11 @@
+  mkdir -p /mnt$NEW_DIR
+  chmod 755 /mnt$NEW_DIR
+  if echo "$DOSLIST" | grep $DOS_PART | grep NTFS 1> $NDIR 2> $NDIR ; then
+-  printf "%-16s %-16s %-11s %-16s %-3s %s\n" "$DOS_PART" "$NEW_DIR" "$FS_TYPE" "$FS_UMASK" "1" "0" >> $TMP/SeTDOS
++  #echo "$DOS_PART      $NEW_DIR       ntfs     ro        1    0" >> $TMP/SeTDOS
++  printf "%-16s %-16s %-11s %-16s %-3s %s\n" "$DOS_PART" "$NEW_DIR" "ntfs" "ro" "1" "0" >> $TMP/SeTDOS
+  else
+-  printf "%-16s %-16s %-11s %-16s %-3s %s\n" "$DOS_PART" "$NEW_DIR" "$FS_TYPE" "$FS_UMASK" "1" "0" >> $TMP/SeTDOS
++  #echo "$DOS_PART      $NEW_DIR       vfat     defaults  1    0" >> $TMP/SeTDOS
++  printf "%-16s %-16s %-11s %-16s %-3s %s\n" "$DOS_PART" "$NEW_DIR" "vfat" "defaults" "1" "0" >> $TMP/SeTDOS
+  fi
+ done # partition adding loop
+ rm -f $TMP/SeTSKIP
+diff -Nur x86/setup/SeTPKG ppc/setup/SeTPKG
+--- x86/setup/SeTPKG	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTPKG	2007-07-09 19:12:31.000000000 +0400
+@@ -59,12 +59,6 @@
+ EOF
+ fi
+ 
+-if [ -d $DS/gnome -o "$DS" = "" ]; then
+-cat << EOF >> $TMP/tmpscript
+-"GNOME" "The GNOME desktop for X" on "The GNOME series contains the GNOME desktop environment and related libraries." \\
+-EOF
+-fi
+-
+ if [ -d $DS/k -o "$DS" = "" ]; then
+ cat << EOF >> $TMP/tmpscript
+ "K" "Linux kernel source" on "The K series contains the source code for the Linux kernel." \\
+@@ -95,6 +89,12 @@
+ EOF
+ fi
+ 
++if [ -d $DS/mac -o "$DS" = "" ]; then
++cat << EOF >> $TMP/tmpscript
++"MAC" "Stuff for PPC" "on" "Mac-specific packages like yaboot" \\
++EOF
++fi
++
+ if [ -d $DS/t -o "$DS" = "" ]; then
+ cat << EOF >> $TMP/tmpscript
+ "T" "TeX typesetting software" on "TeX is a typesetting system often used for mathematics and technical papers." \\
+diff -Nur x86/setup/SeTconfig ppc/setup/SeTconfig
+--- x86/setup/SeTconfig	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTconfig	2007-07-07 13:47:25.000000000 +0400
+@@ -25,25 +25,13 @@
+   mkdir $T_PX/proc
+   chown root.root $T_PX/proc
+ fi
+-if [ ! -d $T_PX/sys ]; then
+-  mkdir $T_PX/sys
+-  chown root.root $T_PX/sys
+-fi
+ chmod 1777 $T_PX/tmp
+ if [ ! -d $T_PX/var/spool/mail ]; then
+   mkdir -p $T_PX/var/spool/mail
+   chmod 755 $T_PX/var/spool
+   chown root.mail $T_PX/var/spool/mail
+   chmod 1777 $T_PX/var/spool/mail
+-fi
+-
+-# Some of the install scripts need /proc and /sys:
+-if [ ! "$T_PX" = "/" ]; then
+-  mount --bind /proc $T_PX/proc 1> /dev/null 2> /dev/null
+-  mount --bind /sys $T_PX/sys 1> /dev/null 2> /dev/null
+-fi
+-# These will be left connected rather than unmounting them to
+-# make it easier to set up LVM/LUKS.
++fi 
+ 
+ # Load keyboard map (if any) when booting
+ if [ -r $TMP/SeTkeymap ]; then
+@@ -79,16 +67,6 @@
+ 
+ # Post installation and setup scripts added by packages.
+ if [ -d $T_PX/var/log/setup ]; then
+-  # Prepare for LVM in a newly installed system
+-  if [ -r /etc/lvmtab -o -d /etc/lvm/backup ]; then # Available in local root
+-    if [ ! -r $T_PX/etc/lvmtab -a ! -d $T_PX/etc/lvm/backup ]; then
+-      #mount --bind /proc $T_PX/proc
+-      #mount --bind /sys $T_PX/sys
+-      chroot $T_PX /sbin/vgscan --mknodes --ignorelockingfailure 2> /dev/null
+-      # First run does not always catch LVM on a LUKS partition:
+-      chroot $T_PX /sbin/vgscan --mknodes --ignorelockingfailure 2> /dev/null
+-    fi
+-  fi
+   for INSTALL_SCRIPTS in $T_PX/var/log/setup/setup.* ; do
+     SCRIPT=`basename $INSTALL_SCRIPTS`
+     # Here, we call each script in /var/log/setup. Two arguments are provided:
+diff -Nur x86/setup/SeTfdHELP ppc/setup/SeTfdHELP
+--- x86/setup/SeTfdHELP	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTfdHELP	2005-04-07 00:20:28.000000000 +0400
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-dialog --title "Slackware Setup Help" --exit-label OK --textbox "/usr/lib/setup/FDhelp" 22 77
++dialog --title "Slackintosh Setup Help" --exit-label OK --textbox "/usr/lib/setup/FDhelp" 22 77
+diff -Nur x86/setup/SeTkernel ppc/setup/SeTkernel
+--- x86/setup/SeTkernel	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTkernel	2008-06-03 13:01:46.000000000 +0400
+@@ -1,76 +1,157 @@
+ #!/bin/sh
++# Configure Yaboot
++#
++# (C) 2005-2006 Adrian Ulrich
++#
++TMP=/var/log/setup/tmp
++
++ROOT_DEVICE=`df /mnt | tail -1 | awk '{ print $1 }'`
++BOOT_DEVICE=`df /mnt/boot | tail -1 | awk '{ print $1 }'`
++
++# Ugly hack to get the correct OpenFirmware path to our /boot device
++echo "/bin/mount -t proc proc /proc ; /bin/mount -t sysfs sys /sys ; /usr/sbin/ofpath $BOOT_DEVICE ; /bin/umount /proc ; /bin/umount /sys" > /mnt/uglyYaboot
++/bin/chmod +x /mnt/uglyYaboot
++YBROOT=`/bin/chroot /mnt /uglyYaboot | awk -F: '{print $2}'`
++YBDEV=`/bin/chroot /mnt /uglyYaboot | awk -F: '{print $1}'`
++rm /mnt/uglyYaboot
++###############################################################################
++
++
++if [ "X$ROOT_DEVICE" != "X$BOOT_DEVICE" ]; then
++  # If /boot is a separate partition, the kernel location
++  # is relative to the root of the partition
++  KERNEL=/vmlinux
++else
++  # Here's the default kernel install location:
++  KERNEL=/boot/vmlinux
++fi
+ 
+-# First, determine our slackware kernel name:
+-for ELEMENT in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ; do
+-  if $(cat /proc/cmdline | cut -f $ELEMENT -d ' ' | grep -q SLACK_KERNEL) ; then
+-    SLACK_KERNEL=$(cat /proc/cmdline | cut -f $ELEMENT -d ' ' | cut -f 2 -d =)
+-  fi
+-done
+-unset ELEMENT
++OSX=`fdisk -l | grep "HFS$" | grep -v "CDROM" | tail -1 | awk '{ print $1 }'`
++BOOTSTRAP=`fdisk -l | grep "Apple_Bootstrap" | grep "NewWorld" | tail -1 | awk '{ print $1 }'`
+ 
+-# Next, find the kernel's release version:
+-VERSION=$(uname -r)
++if [ "X$YBROOT" == "X" ]; then
++ dialog --title "Error" --msgbox \
++ "Unable to find a NewWorld bootblock\n\
++You need to create a bootblock using mac-fdisk\n\
++or you'll be unable to boot your new system!\n"\
++ 10 70
++exit
++fi
+ 
+-# If someone tries to install kernels from a CD that doesn't contain any,
+-# we'll give them one chance to find a disc that does.
+-swapdisks() {
+-  CDDEVICE=$(cat $TMP/SeTCDdev)
+-  umount $CDDEVICE 1> /dev/null 2> /dev/null
+-  eject $CDDEVICE
+-  dialog --title "REINSERT KERNEL DISC TO INSTALL $SLACK_KERNEL kernel" --msgbox \
+-"Please reinsert the Slackware disc containing the collection \
+-of Linux kernels.  Usually this is disc number one (the disc \
+-that you boot from).  Once you've inserted the disc, hit ENTER \
+-to continue." \
+-8 61
+-  mount $CDDEVICE /var/log/mount 1> /dev/null 2> /dev/null
+-}
+-
+-# Check symlinks /nfs and /cdrom pointing to /var/log/mount:
+-if mount | grep -q "type nfs" ; then
+-  PLINK=nfs
+-else
+-  PLINK=cdrom
++
++dialog --title "Yaboot configuration settings" --msgbox \
++"OSX:           $OSX\n\
++KERNEL:        $KERNEL\n\
++BOOTSTRAP:     $BOOTSTRAP\n\
++ROOT_DEVICE:   $ROOT_DEVICE\n\
++BOOT_DEVICE:   $BOOT_DEVICE\n\
++YBROOT:        $YBROOT\n\
++YBDEV:         $YBDEV" \
++15 70
++
++if [ ! -d $TMP ]; then
++  mkdir -p $TMP
++fi
++
++rm -f $TMP/YaB00t $TMP/tmpscript
++cat << EOF > $TMP/tmpscript
++dialog --title "Yaboot Configuration" --checklist \\
++ "I will install Yaboot on $BOOTSTRAP, you can now configure some options" \\
++ 16 70 6 \\
++ "O" "Include OpenFirmware option" off \\
++ "N" "Include Network boot option" on \\
++ "C" "Include CD Boot option" on \\
++EOF
++
++if [ ! "X$OSX" = "X" ]; then
++cat << EOF >> $TMP/tmpscript
++ "X" "Include OSX Boot option ($OSX)" on \\
++EOF
++fi
++
++cat << EOF >> $TMP/tmpscript
++ 2> $TMP/YaB00t
++EOF
++
++while [ 0 ]; do
++. $TMP/tmpscript
++if [ ! $? = 0 ]; then
++ dialog --msgbox "Configuration aborted.\n\
++ *HINT*: chroot into /mnt , mount /proc and /sys,\n\
++ edit /etc/yaboot.conf and run ybin"\
++ 10 70
++ break
++fi
++
++# Write the yaboot configuration
++cat << EOF > $TMP/tmpyb
++#Yaboot configuration
++init-message="Slackintosh 12.1  **NOTE** Use 'linux-failsave' if your screen flashes after booting"
++boot=$BOOTSTRAP
++device=$YBDEV:
++partition=$YBROOT
++delay=10
++timeout=40
++install=/usr/lib/yaboot/yaboot
++magicboot=/usr/lib/yaboot/ofboot
++
++EOF
++
++
++grep C $TMP/YaB00t > /dev/null
++if [ $? = 0 ]; then
++ echo "enablecdboot" >> $TMP/tmpyb
++fi
++
++grep O $TMP/YaB00t > /dev/null
++if [ $? = 0 ]; then
++ echo "enableofboot" >> $TMP/tmpyb
+ fi
+-# Point KDIR to the install kernel's directory:
+-KDIR=/$PLINK/kernels/${SLACK_KERNEL}
+ 
+-( cd boot || exit
+-  if [ ! "$SLACK_KERNEL" = "speakup.s" ]; then
+-    if [ "$SLACK_KERNEL" = "hugesmp.s" ]; then
+-      KNAME=huge-smp
+-    elif [ "$SLACK_KERNEL" = "huge.s" ]; then
+-      KNAME=huge
+-    fi
+-    if [ -r ${KDIR}/bzImage ]; then
+-      rm -f vmlinuz config System.map
+-      cp -a ${KDIR}/bzImage vmlinuz-${KNAME}-${VERSION}
+-      cp -a ${KDIR}/config config-${KNAME}-${VERSION}
+-      cp -a ${KDIR}/System.map.gz System.map-${KNAME}-${VERSION}.gz
+-      gzip -d --force System.map-${KNAME}-${VERSION}.gz
+-      ln -sf vmlinuz-${KNAME}-${VERSION} vmlinuz
+-      ln -sf config-${KNAME}-${VERSION} config
+-      ln -sf System.map-${KNAME}-${VERSION} System.map
+-    fi
+-  elif [ "$SLACK_KERNEL" = "speakup.s" ]; then
+-    if [ "$PLINK" = "cdrom" -a ! -d /cdrom/kernels ]; then
+-      swapdisks
+-    fi
+-    KNAME=speakup
+-    if [ -r ${KDIR}/bzImage ]; then
+-      rm -f vmlinuz config System.map
+-      cp -a ${KDIR}/bzImage vmlinuz-${KNAME}-${VERSION}
+-      cp -a ${KDIR}/config config-${KNAME}-${VERSION}
+-      cp -a ${KDIR}/System.map.gz System.map-${KNAME}-${VERSION}
+-      gzip -d --force System.map-${KNAME}-${VERSION}.gz
+-      ln -sf vmlinuz-${KNAME}-${VERSION} vmlinuz
+-      ln -sf config-${KNAME}-${VERSION} config
+-      ln -sf System.map-${KNAME}-${VERSION} System.map
+-    fi
+-    # flunk
+-    if [ ! -d /$PLINK/kernels ]; then
+-      break; # we've done all we can do -- grab a body bag.
+-    fi
+-  fi
+-)
++grep N $TMP/YaB00t > /dev/null
++if [ $? = 0 ]; then
++ echo "enablenetboot" >> $TMP/tmpyb
++fi
++
++if [ ! "X$OSX" = "X" ]; then
++ grep X $TMP/YaB00t > /dev/null
++ if [ $? = 0 ]; then
++ echo "macosx=$OSX" >> $TMP/tmpyb
++ fi
++fi
+ 
++cat << EOF >> $TMP/tmpyb
++
++## Kernel Image
++image=$KERNEL
++  label=linux
++  root=$ROOT_DEVICE
++  read-only
++
++image=$KERNEL
++  label=linux-failsave
++  root=$ROOT_DEVICE
++  append="video=ofonly"
++  read-only
++
++EOF
++
++# Write install script into /mnt/tmp/chrootme
++cat << EOF >> /mnt/tmp/chrootme
++mount -t proc proc /proc
++mount -t sysfs sys /sys
++echo y|mkofboot
++ybin -v
++echo "** YaBoot Installation finished"
++echo "** Hit ENTER to continue"
++read
++exit
++EOF
++chmod +x /mnt/tmp/chrootme
++
++echo "Starting Yaboot installation on $BOOTSTRAP ..."
++cp $TMP/tmpyb /mnt/etc/yaboot.conf
++chroot /mnt /tmp/chrootme
++rm /mnt/tmp/chrootme
++break
++done
+diff -Nur x86/setup/SeTmaketag ppc/setup/SeTmaketag
+--- x86/setup/SeTmaketag	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTmaketag	2005-04-07 00:20:28.000000000 +0400
+@@ -9,7 +9,7 @@
+ found on the first disk of a series that can determine which packages are \
+ installed and which are skipped.  Deciding which files to install in advance \
+ can speed up the installation process greatly.  If you have not installed \
+-Slackware Linux before, you should probably try installing using the \
++Slackintosh Linux before, you should probably try installing using the \
+ default tagfiles before you try making custom ones, because you won't see much \
+ information about the package contents when creating your tagfiles.  This \
+ process assumes you already know which packages you want to install.  \
+@@ -89,10 +89,7 @@
+   else # no tagfile create script!
+    dialog --title "NO TAGFILE SCRIPT" --msgbox "Sorry, but a custom tagfile \
+ cannot be created for this disk because it does not have a 'maketag' script.  \
+-The maketag script was introduced in Slackware 1.1.2, and provides the menu \
+-of packages to select from.  Currently there is no way to just look at the \
+-disks and 'wing it', but maybe there will be eventually.  You'll have to edit \
+-the tagfile on this disk manually." 11 65
++You'll have to edit the tagfile on this disk manually." 11 65
+    umount $MOUNT
+    continue 
+   fi
+@@ -127,10 +124,7 @@
+    dialog --title "NO TAGFILE SCRIPT" --msgbox "Sorry, but a custom tagfile \
+ cannot be created for this disk series because the directory you gave does \
+ not have a 'maketag' script.  \
+-The maketag script was introduced in Slackware 1.1.2, and provides the menu \
+-of packages to select from.  Currently there is no way to just look at the \
+-packages and 'wing it', but maybe there will be eventually.  You'll have to \
+-edit the tagfile in this directory manually." 11 65
++You'll have to edit the tagfile in this directory manually." 11 65
+    continue
+   fi
+   if [ -r $DIR/$MAKETAG ]; then
+diff -Nur x86/setup/SeTmedia ppc/setup/SeTmedia
+--- x86/setup/SeTmedia	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTmedia	2005-04-07 00:20:28.000000000 +0400
+@@ -4,15 +4,13 @@
+   mkdir -p $TMP
+ fi
+ 
+-dialog --backtitle "Select Slackware installation source." \
+---title "SOURCE MEDIA SELECTION" --menu \
+-"Please select the media from which to install Slackware Linux:" \
+-12 70 5 \
+-"1" "Install from a Slackware CD or DVD" \
++dialog --title "SOURCE MEDIA SELECTION" --menu \
++"Please select the media from which to install Slackintosh Linux:" \
++11 70 4 \
++"1" "Install from a Slackintosh CD or DVD" \
+ "2" "Install from a hard drive partition" \
+ "3" "Install from NFS (Network File System)" \
+-"4" "Install from FTP/HTTP server" \
+-"5" "Install from a pre-mounted directory" \
++"4" "Install from a pre-mounted directory" \
+ 2> $TMP/media
+ if [ ! $? = 0 ]; then
+  rm $TMP/media
+@@ -26,13 +24,11 @@
+ elif [ "$SOURCE_MEDIA" = "2" ]; then
+  INShd
+ elif [ "$SOURCE_MEDIA" = "3" ]; then
+- SeTnet
+  INSNFS
+ elif [ "$SOURCE_MEDIA" = "4" ]; then
+- SeTnet
+- INSURL 
++ INSdir 
+ elif [ "$SOURCE_MEDIA" = "5" ]; then
+- INSdir
++ INSfd
+ fi
+ 
+ # Sorry, this goes the way of the dinosaur...
+diff -Nur x86/setup/SeTnet ppc/setup/SeTnet
+--- x86/setup/SeTnet	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTnet	1970-01-01 03:00:00.000000000 +0300
+@@ -1,334 +0,0 @@
+-#!/bin/sh
+-# This script will be called with the single argument of "boot" during the
+-# system startup, to allow for unattended network configuration.
+-# For this to work, all required information must be passed on the commandline.
+-# Two parameters, 'kbd=' and 'nic=' must be used to supply this information.
+-# kbd=<keyboard_layout>
+-# nic=<driver>:<interface>:<dhcp|static>[:ipaddr:netmask[:gateway]]
+-
+-TMP=/var/log/setup/tmp
+-if [ ! -d $TMP ]; then
+- mkdir -p $TMP
+-fi
+-
+-# Terminate the script now if we have an interface with an IP address:
+-# Running the script is not needed anymore in that case.
+-if `ip -f inet -o addr show | grep -v " lo " 1>/dev/null 2>/dev/null` ; then
+-  exit 0
+-fi
+-
+-# Function to convert the netmask from CIDR format to dot notation.
+-cidr_cvt() {
+-  inform=$1
+-  if   [ $inform -ge 32 ]; then outform='255.255.255.255'
+-  elif [ $inform -ge 31 ]; then outform='255.255.255.254'
+-  elif [ $inform -ge 30 ]; then outform='255.255.255.252'
+-  elif [ $inform -ge 29 ]; then outform='255.255.255.248'
+-  elif [ $inform -ge 28 ]; then outform='255.255.255.240'
+-  elif [ $inform -ge 27 ]; then outform='255.255.255.224'
+-  elif [ $inform -ge 26 ]; then outform='255.255.255.192'
+-  elif [ $inform -ge 25 ]; then outform='255.255.255.128'
+-  elif [ $inform -ge 24 ]; then outform='255.255.255.0'
+-  elif [ $inform -ge 23 ]; then outform='255.255.254.0'
+-  elif [ $inform -ge 22 ]; then outform='255.255.252.0'
+-  elif [ $inform -ge 21 ]; then outform='255.255.248.0'
+-  elif [ $inform -ge 20 ]; then outform='255.255.240.0'
+-  elif [ $inform -ge 19 ]; then outform='255.255.224.0'
+-  elif [ $inform -ge 18 ]; then outform='255.255.192.0'
+-  elif [ $inform -ge 17 ]; then outform='255.255.128.0'
+-  elif [ $inform -ge 16 ]; then outform='255.255.0.0'
+-  elif [ $inform -ge 15 ]; then outform='255.254.0.0'
+-  elif [ $inform -ge 14 ]; then outform='255.252.0.0'
+-  elif [ $inform -ge 13 ]; then outform='255.248.0.0'
+-  elif [ $inform -ge 12 ]; then outform='255.240.0.0'
+-  elif [ $inform -ge 11 ]; then outform='255.224.0.0'
+-  elif [ $inform -ge 10 ]; then outform='255.192.0.0'
+-  elif [ $inform -ge 9 ]; then outform='255.128.0.0'
+-  elif [ $inform -ge 8 ]; then outform='255.0.0.0'
+-  elif [ $inform -ge 7 ]; then outform='254.0.0.0'
+-  elif [ $inform -ge 6 ]; then outform='252.0.0.0'
+-  elif [ $inform -ge 5 ]; then outform='248.0.0.0'
+-  elif [ $inform -ge 4 ]; then outform='240.0.0.0'
+-  elif [ $inform -ge 3 ]; then outform='224.0.0.0'
+-  elif [ $inform -ge 2 ]; then outform='192.0.0.0'
+-  elif [ $inform -ge 1 ]; then outform='128.0.0.0'
+-  elif [ $inform -ge 0 ]; then outform='0.0.0.0'
+-  fi
+-  echo $outform
+-}
+-
+-# First, sane defaults:
+-INTERFACE=""
+-ENET_MODE="ask"
+-# Does the commandline have NIC information for us?
+-# Format is 'nic=driver:interface:<dhcp|static>:ip:mask:gw'
+-for CMDELEM in $(cat /proc/cmdline) ; do
+- if $(echo $CMDELEM | grep -q "^nic=") ; then
+-  DRIVER=$(echo $CMDELEM | cut -f2 -d=)
+-  INTERFACE=$(echo $DRIVER | cut -f2 -d:)
+-  ENET_MODE=$(echo $DRIVER | cut -f3 -d:)
+-  if [ "$ENET_MODE" = "static" ]; then
+-   IPADDR=$(echo $DRIVER | cut -f4 -d:)
+-   NETMASK=$(echo $DRIVER | cut -f5 -d:)
+-   # We allow for CIDR notation of the netmask (0 < NETMASK < 25):
+-   if [ "$(echo $NETMASK | tr -cd '\.')" != "..." ]; then
+-    NETMASK=$(cidr_cvt $NETMASK)
+-   fi
+-   GATEWAY=$(echo $DRIVER | cut -f6 -d:)
+-  fi
+-  DRIVER=$(echo $DRIVER | cut -f1 -d:)
+-  break
+- fi
+-done
+-
+-# If the script has an argument of 'boot' then we require all information for
+-# unattended network setup or else we silently exit.
+-if [ "$1" = "boot" ]; then
+-  if [ "x$DRIVER" = "x" -o "x$INTERFACE" = "x" -o "$ENET_MODE" = "ask" ]; then
+-    exit 2
+-  elif [ "$ENET_MODE" = "static" ] && [ "x$IPADDR" = "x" -o "x$NETMASK" = "x" ]; then
+-    exit 2
+-  fi
+-fi
+-
+-# If the cmdline provided the name of a driver, load it;
+-# Alternatively check if the user ran "network" before running "setup";
+-# We need an interface:
+-if [ `cat /proc/net/dev | grep ':' | sed -e "s/^ *//" | cut -f1 -d: | grep -v lo | wc -l` = 0 ]; then
+-  if [ "x${DRIVER}" != "x" ]; then
+-    modprobe ${DRIVER} 1>/dev/null 2>/dev/null
+-  else
+-    while [ 0 ]; do
+-      cat << EOF > $TMP/tempmsg
+-
+-You will now get a chance to probe your network interfaces.
+-
+-EOF
+-      dialog --title "PROBING NETWORK DEVICES" --msgbox "`cat $TMP/tempmsg`" 7 68
+-      rm -f $TMP/tempmsg
+-      /bin/network --installer
+-      read -p "Press any key..." JUNK
+-      sleep 5 # Give dhcpcd a change to probe
+-      unset JUNK
+-      cat << EOF > $TMP/tempmsg
+-
+-Are you OK with the network interface which was detected?
+-If not, select 'No' to get back to the network probe program.
+-You can try to load another driver explicitly,
+-by using "P <driver_name>".
+-
+-If you are satisfied, select 'Yes' to continue with network configuration.
+-EOF
+-      dialog --title "PROBING NETWORK DEVICES" --yesno "`cat $TMP/tempmsg`" 12 68
+-      if [ $? = 0 ]; then
+-        rm -f $TMP/tempmsg
+-        break
+-      fi
+-    done
+-  fi
+-fi
+-
+-# If we obtained information from a DHCP server, use it:
+-if [ "x$INTERFACE" = "x" ]; then # the cmdline did not provide a nic
+- for I_I in \
+-  $(cat /proc/net/dev | grep ':' | sed -e "s/^ *//" | cut -f1 -d: | grep -v lo) ;
+- do
+-  if [ -f /etc/dhcpc/dhcpcd-${I_I}.info ]; then
+-    INTERFACE="${I_I}"
+-    break
+-  fi
+- done
+- unset I_I
+-fi
+-
+-while [ 0 ]; do
+- T_PX="`cat $TMP/SeTT_PX`"
+- UPNRUN=1
+- if [ "$T_PX" = "/" ]; then
+-  cat << EOF > $TMP/tempmsg
+-
+-You're running off the hard drive filesystem. Is this machine
+-currently running on the network you plan to install from? If
+-so, we won't try to reconfigure your ethernet card.
+-
+-Are you up-and-running on the network?
+-EOF
+-  dialog --title "NETWORK CONFIGURATION" --yesno "`cat $TMP/tempmsg`" 12 68
+-  UPNRUN=$?
+- fi
+- if [ $UPNRUN = 1 ]; then
+-  ENET_DEVICE=${INTERFACE:-"eth0"} 
+-  if [ "x$INTERFACE" != "x" ]; then # interface specified via cmdline or dhcpcd
+-   if [ "$ENET_MODE" = "ask" ]; then
+-    # Offer to install using DHCP:
+-    cat << EOF > $TMP/tempmsg
+-
+-I can configure your network interface $ENET_DEVICE
+-fully automatically using DHCP.
+-If you want this, please select 'yes'.
+-
+-If you select 'no' instead, then you will be able to assign
+-the IP address, netmask and gateway manually.
+-
+-EOF
+-    dialog --title "DHCP CONFIGURATION" --yesno "`cat $TMP/tempmsg`" 12 65
+-    if [ $? -eq 0 ]; then
+-     rm -f $TMP/tempmsg
+-     echo $ENET_DEVICE > $TMP/SeTdhcp
+-    else
+-     rm -f $TMP/SeTdhcp
+-    fi
+-   elif [ "$ENET_MODE" = "dhcp" ]; then # Don't ask, just use DHCP
+-    echo $ENET_DEVICE > $TMP/SeTdhcp
+-   fi
+-  fi # End non-empty INTERFACE 
+-
+-  if [ ! -r $TMP/SeTdhcp ]; then
+-   # No DHCP configured, so use static IP.
+-   # If we have all the values ready, don't ask any.
+-   # Only if the script runs with the "boot" parameter will we silently accept
+-   # an empty gateway address (if we came this far, we will have IP/netmask):
+-   if [ "$1" = "boot" -a "x$GATEWAY" = "x" ]; then
+-    HAVE_GATEWAY=1
+-    GATEWAY="unspec"
+-   else
+-    HAVE_GATEWAY=0
+-   fi
+-   if [ "x$IPADDR" = "x" -o "x$NETMASK" = "x" -o "x$GATEWAY" = "x" ]; then
+-    cat << EOF > $TMP/tempmsg
+-
+-You will need to enter the IP address you wish to
+-assign to this machine. Example: 111.112.113.114
+-
+-What is your IP address?
+-EOF
+-    if [ "$LOCAL_IPADDR" = "" ]; then # assign default
+-     LOCAL_IPADDR=${IPADDR}
+-    fi
+-    dialog --title "ASSIGN IP ADDRESS" --inputbox "`cat $TMP/tempmsg`" 12 \
+-    65 $LOCAL_IPADDR 2> $TMP/local
+-    if [ ! $? = 0 ]; then
+-     rm -f $TMP/tempmsg $TMP/local
+-     exit
+-    fi
+-    LOCAL_IPADDR="`cat $TMP/local`"
+-    rm -f $TMP/local
+-    cat << EOF > $TMP/tempmsg
+-
+-Now we need to know your netmask.
+-Typically this will be 255.255.255.0
+-but this can be different depending on
+-your local setup.
+-
+-What is your netmask?
+-EOF
+-    if [ "$LOCAL_NETMASK" = "" ]; then # assign default
+-     LOCAL_NETMASK=${NETMASK:-255.255.255.0}
+-    fi
+-    dialog --title "ASSIGN NETMASK" --inputbox "`cat $TMP/tempmsg`" 14 \
+-    65 $LOCAL_NETMASK 2> $TMP/mask
+-    if [ ! $? = 0 ]; then
+-     rm -f $TMP/tempmsg $TMP/mask
+-     exit
+-    fi
+-    LOCAL_NETMASK="`cat $TMP/mask`"
+-    rm $TMP/mask
+-    dialog --yesno "Do you have a gateway?" 5 30
+-    HAVE_GATEWAY=$?
+-    if [ "$HAVE_GATEWAY" = "0" ]; then
+-     if [ "$LOCAL_GATEWAY" = "" ]; then
+-      if [ "$GATEWAY" = "" ]; then
+-       LOCAL_GATEWAY="`echo $LOCAL_IPADDR | cut -f1-3 -d '.'`."
+-      else
+-       LOCAL_GATEWAY=${GATEWAY}
+-      fi
+-     fi
+-     dialog --title "ASSIGN GATEWAY ADDRESS" --inputbox \
+-     "\nWhat is the IP address for your gateway?" 9 65 \
+-     $LOCAL_GATEWAY 2> $TMP/gw
+-     if [ ! $? = 0 ]; then
+-      rm -f $TMP/tempmsg $TMP/gw
+-      exit
+-     fi
+-     LOCAL_GATEWAY="`cat $TMP/gw`"
+-     rm -f $TMP/gw
+-    fi
+-   else
+-    # Non-interactive run, so we use the values set on the commandline:
+-    LOCAL_IPADDR=${IPADDR}
+-    LOCAL_NETMASK=${NETMASK}
+-    LOCAL_GATEWAY=${GATEWAY}
+-   fi # end questions asked
+-  fi # end static ip
+-
+-  if [ "$ENET_MODE" = "ask" -a ! -r $TMP/SeTdhcp ]; then
+-   cat << EOF > $TMP/tempmsg
+-
+-This is the proposed network configuration for $ENET_DEVICE -
+-If this is OK, then select 'Yes'.
+-If this is not OK and you want to configure again, select 'No'.
+-
+-* IP Address: $LOCAL_IPADDR 
+-* Netmask:    $LOCAL_NETMASK
+-EOF
+-   if [ "$HAVE_GATEWAY" = 0 ]; then
+-    echo "* Gateway:    $LOCAL_GATEWAY" >> $TMP/tempmsg
+-   fi 
+-   echo "" >> $TMP/tempmsg
+-   dialog --no-collapse --title "NETWORK CONFIGURATION" --yesno "`cat $TMP/tempmsg`" 14 68
+-   if [ $? -eq 1 ]; then
+-    continue # New round of questions
+-   fi
+-  fi # end ask approval for ip config
+-
+-  #echo "Configuring ethernet card..."
+-  dialog --title "INITIALIZING NETWORK" --infobox \
+-  "\nConfiguring your network interface $ENET_DEVICE ..." 5 56
+-  if [ -r $TMP/SeTdhcp ]; then
+-   dhcpcd -k $ENET_DEVICE 1>/dev/null 2>&1 # Or else the '-T' will be used next:
+-   sleep 3
+-   dhcpcd $ENET_DEVICE
+-  else
+-   dhcpcd -k $ENET_DEVICE 1>/dev/null 2>&1 # We don't need it now
+-   # Broadcast and network are derived from IP and netmask:
+-   LOCAL_BROADCAST=`ipmask $LOCAL_NETMASK $LOCAL_IPADDR | cut -f 1 -d ' '`
+-   LOCAL_NETWORK=`ipmask $LOCAL_NETMASK $LOCAL_IPADDR | cut -f 2 -d ' '`
+-   ifconfig $ENET_DEVICE $LOCAL_IPADDR netmask $LOCAL_NETMASK broadcast $LOCAL_BROADCAST
+-   if [ "$HAVE_GATEWAY" = "0" ]; then
+-    #echo "Configuring your gateway..."
+-    route add default gw $LOCAL_GATEWAY metric 1
+-   fi
+-   echo $LOCAL_IPADDR > $TMP/SeTIP
+-   echo $LOCAL_NETMASK > $TMP/SeTnetmask
+-   echo $LOCAL_GATEWAY > $TMP/SeTgateway
+-  fi
+- fi # ! UPNRUN
+-
+- break
+-
+-done
+-echo $UPNRUN > $TMP/SeTupnrun
+-
+-# Basic initialisation completed. Let's see what the commandline has for us:
+-# If we know of a remote configuration file, get it now:
+-# Provide comma-separated values (protocol,remoteserver[:portnumber],configfile)
+-# like this example: 'cf=tftp,192.168.0.22,/slackware-12.1/configs/t43.cfg'
+-for CMDELEM in $(cat /proc/cmdline) ; do
+- if $(echo $CMDELEM | grep -q "^cf=") ; then
+-  CONFIGFILE=$(echo $CMDELEM | cut -f2 -d=)
+-  PROTO=$(echo $CONFIGFILE | cut -f1 -d,)
+-  DLSERVER=$(echo $CONFIGFILE | cut -f2 -d,)
+-  CONFIGFILE=$(echo $CONFIGFILE | cut -f3 -d,)
+-  dialog --title "FETCHING CONFIGURATION" --infobox \
+-   "\nAttempting to fetch a remote configuration file using $PROTO ..."54 56
+- fi
+-done
+-
+-if [ -n "$CONFIGFILE" ]; then
+- if [ "$PROTO" = "tftp" ]; then
+-  tftp -g -r $CONFIGFILE -l $TMP/Punattended $DLSERVER 1>/dev/null 2>&1
+- elif [ "$PROTO" = "ftp" -o "$PROTO" = "http" ]; then
+-  wget -q -P $TMP -O Punattended ${PROTO}://${DLSERVER}${CONFIGFILE}
+- fi
+-fi
+-
+diff -Nur x86/setup/SeTpartitions ppc/setup/SeTpartitions
+--- x86/setup/SeTpartitions	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTpartitions	2007-07-09 19:01:43.000000000 +0400
+@@ -307,7 +307,7 @@
+ sync
+ # If we didn't format the partition, then we don't know what fs type it is.
+ # So, we will try the types we know about, and let mount figure it out if all else fails:
+-for fs in "-t ext3" "-t ext2" "-t reiserfs" "-t jfs" "-t xfs" "" ; do
++for fs in "-t ext3" "-t ext2" "-t reiserfs" "" ; do
+   if mount $ROOT_DEVICE $T_PX $fs 1> $REDIR 2> $REDIR ; then
+     break
+   fi
+diff -Nur x86/setup/SeTswap ppc/setup/SeTswap
+--- x86/setup/SeTswap	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/SeTswap	2007-07-14 19:29:28.000000000 +0400
+@@ -14,17 +14,18 @@
+ 
+ # get_part_size( dev ) - Return the size in KB of the named partition.
+ get_part_size() {
+-   Size=`probe -l 2> /dev/null | grep "$1 " | tr -d "*" | tr -d "+" | crunch | cut -f 4 -d ' '`
++ #   Size=`probe -l | fgrep "$1 " | tr -d "*" | tr -d "+" | crunch | cut -f 7 -d ' '`
++   Size=`probe -l | fgrep "$1 " | tr -d "(" | tr -d ")" | awk '{ print $7 }' | crunch `
+    echo $Size
+ }
+ 
+ rm -f $TMP/SeTswap $TMP/SeTswapskip $TMP/SeTuseswap $TMP/tmpscript
+ 
+-SWAPLIST="`probe -l 2> /dev/null | grep "Linux swap" | cut -f 1 -d ' ' | sort 2> $NDIR`" 
++SWAPLIST="`probe -l | fgrep "Linux swap" | awk '{print $1}' | sort 2> $NDIR`"
+ 
+ if [ "$SWAPLIST" = "" ]; then
+  dialog --title "NO SWAP SPACE DETECTED" --yesno "You have not created \
+-a swap partition with Linux fdisk.  \
++a swap partition with Linux mac-fdisk.  \
+ Do you want to continue installing without one? " 6 60
+  if [ "$?" = "1" ]; then
+   dialog --title "ABORTING INSTALLATION" --msgbox "Create a swap partition with Linux fdisk, and then try this again." \
+@@ -38,7 +39,7 @@
+  cat << EOF > $TMP/tmpscript
+ dialog --backtitle "Setting up swap partitions." \\
+ --title "SWAP SPACE DETECTED" --checklist \\
+-"Slackware Setup has detected one or more swap partitions \\
++"Slackintosh Setup has detected one or more swap partitions \\
+ on your system.  These partitions have been \\
+ preselected to be set up as swap space.  If there are any \\
+ swap partitions that you \\
+@@ -51,7 +52,7 @@
+  for swappartition in $SWAPLIST ; do
+   PARTSIZE=$(get_part_size $swappartition)
+   cat << EOF >> $TMP/tmpscript
+-"$swappartition" "Linux swap partition, ${PARTSIZE}KB" on \\
++"$swappartition" "Linux swap partition, ${PARTSIZE}" on \\
+ EOF
+  done
+  cat << EOF >> $TMP/tmpscript
+@@ -78,7 +79,7 @@
+  if [ ! -r $TMP/SeTswapskip ]; then
+   dialog --backtitle "Setting up swap partitions." \
+  --title "CHECK SWAP PARTITIONS FOR BAD BLOCKS?" --defaultno --yesno \
+-"Slackware Setup will now prepare your system's swap space.  \
++"Slackintosh Setup will now prepare your system's swap space.  \
+ When formatting swap partitions with mkswap you may also check \
+ them for bad blocks.  This is not the default since nearly all \
+ modern hard drives check themselves for bad blocks anyway.  \
+diff -Nur x86/setup/SeTswap.old ppc/setup/SeTswap.old
+--- x86/setup/SeTswap.old	1970-01-01 03:00:00.000000000 +0300
++++ ppc/setup/SeTswap.old	2006-10-03 18:53:52.000000000 +0400
+@@ -0,0 +1,96 @@
++#!/bin/sh
++TMP=/var/log/setup/tmp
++if [ ! -d $TMP ]; then
++  mkdir -p $TMP
++fi
++REDIR=/dev/tty4
++NDIR=/dev/null
++crunch() {
++ read STRING;
++ echo $STRING;
++}
++rm -f $TMP/SeTswap $TMP/SeTswapskip
++SWAPLIST="`probe -l | fgrep "Linux swap" | sort 2> $NDIR`" 
++if [ "$SWAPLIST" = "" ]; then
++ dialog --title "NO SWAP SPACE DETECTED" --yesno "You have not created \
++a swap partition with Linux mac-fdisk.  \
++Do you want to continue installing without one? " 6 60
++ if [ "$?" = "1" ]; then
++  dialog --title "ABORTING INSTALLATION" --msgbox "Create a swap partition with Linux fdisk, and then try this again." \
++6 40
++ else
++  touch $TMP/SeTswapskip
++ fi
++ exit
++else # there is at least one swap partition:
++ echo > $TMP/swapmsg 
++ if [ "`echo "$SWAPLIST" | sed -n '2 p'`" = "" ]; then
++  echo "Slackintosh Setup has detected a swap partition:" >> $TMP/swapmsg
++  echo >> $TMP/swapmsg
++  echo "   Device Boot    Start       End    Blocks   Id  System\\n" >> $TMP/swapmsg
++  echo "`echo "$SWAPLIST" | sed -n '1 p'`\\n" >> $TMP/swapmsg
++  echo >> $TMP/swapmsg
++  echo "Do you wish to install this as your swap partition?" >> $TMP/swapmsg
++  dialog --title "SWAP SPACE DETECTED" --cr-wrap --yesno "`cat $TMP/swapmsg`" 12 70
++  REPLY=$?
++ else
++  echo "Slackintosh Setup has detected the following swap partitions:" >> $TMP/swapmsg
++  echo >> $TMP/swapmsg
++  echo "   Device Boot    Start       End    Blocks   Id  System\\n" >> $TMP/swapmsg
++  echo "$SWAPLIST\\n" >> $TMP/swapmsg
++  echo >> $TMP/swapmsg
++  echo "Do you wish to install these as your swap partitions? " >> $TMP/swapmsg
++  dialog --title "SWAP SPACE DETECTED" --cr-wrap --yesno "`cat $TMP/swapmsg`" 13 70
++  REPLY=$?
++ fi
++ rm -f $TMP/swapmsg
++ if [ $REPLY = 0 ]; then # yes
++  if cat /proc/meminfo | grep "SwapTotal:           0 kB" 1> $NDIR 2> $NDIR ; then
++   USE_SWAP=0 # swap is not currently mounted
++  else # warn of possible problems:
++   # This 10231808 below is the size of a swapfile pre-supplied by install.zip that we'd like to ignore.
++   if grep 10231808 /proc/meminfo 1> $NDIR 2> $NDIR ; then
++    USE_SWAP=0
++   else
++    cat << EOF > $TMP/swapmsg
++IMPORTANT NOTE: If you have already made any of your swap 
++partitions active (using the swapon command), then you 
++should not allow Setup to use mkswap on your swap partitions,
++because it may corrupt memory pages that are currently 
++swapped out.  Instead, you will have to make sure that your 
++swap partitions have been prepared (with mkswap) before they
++will work.  You might want to do this to any inactive swap 
++partitions before you reboot.
++EOF
++    dialog --title "MKSWAP WARNING" --msgbox "`cat $TMP/swapmsg`" 12 67
++    rm -f $TMP/swapmsg
++    dialog --title "USE MKSWAP?" --yesno "Do you want Setup to use mkswap on your swap partitions?" \
++    5 65
++    USE_SWAP=$?
++   fi
++  fi
++  CURRENT_SWAP="1" 
++  while [ ! "`echo "$SWAPLIST" | sed -n "$CURRENT_SWAP p"`" = "" ]; do 
++   SWAP_PART=`probe -l | fgrep "Linux swap" | sed -n "$CURRENT_SWAP p" | crunch | cut -f 1 -d ' '`
++   if [ $USE_SWAP = 0 ]; then 
++    dialog --title "FORMATTING SWAP PARTITION" --infobox "Formatting \
++$SWAP_PART as a Linux swap partition (and checking for bad blocks)..." 4 55
++    mkswap -c -v1 $SWAP_PART 1> $REDIR 2> $REDIR
++   fi
++   echo "Activating swap partition $SWAP_PART:"
++   echo "swapon $SWAP_PART"
++   swapon $SWAP_PART 1> $REDIR 2> $REDIR
++   #SWAP_IN_USE="`echo "$SWAP_PART       swap        swap        defaults   0   0"`"
++   #echo "$SWAP_IN_USE" >> $TMP/SeTswap
++   printf "%-16s %-16s %-11s %-16s %-3s %s\n" "$SWAP_PART" "swap" "swap" "defaults" "0" "0" >> $TMP/SeTswap
++   CURRENT_SWAP="`expr $CURRENT_SWAP + 1`"
++   sleep 4
++  done
++  echo "Your swapspace has been configured. This information will" > $TMP/swapmsg
++  echo "be added to your /etc/fstab:" >> $TMP/swapmsg
++  echo >> $TMP/swapmsg
++  cat $TMP/SeTswap >> $TMP/swapmsg 
++  dialog --title "SWAP SPACE CONFIGURED" --exit-label OK --textbox $TMP/swapmsg 10 72
++  rm $TMP/swapmsg
++ fi
++fi  
+diff -Nur x86/setup/installpkg ppc/setup/installpkg
+--- x86/setup/installpkg	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/installpkg	2005-04-07 00:20:28.000000000 +0400
+@@ -1,7 +1,6 @@
+ #!/bin/sh
+ # Copyright 1994, 1998, 2000  Patrick Volkerding, Concord, CA, USA 
+ # Copyright 2001, 2003  Slackware Linux, Inc., Concord, CA, USA
+-# Copyright 2007  Patrick Volkerding, Sebeka, MN, USA 
+ # All rights reserved.
+ #
+ # Redistribution and use of this script, with or without modification, is
+@@ -21,16 +20,6 @@
+ #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #
+-# Fri Dec 21 17:21:35 CST 2007
+-# Added a patch from Johnny Morano to work around package removal issues
+-# caused by packages that do not comply with FHS combined with a grep
+-# regex error in installpkg.  Any package with a single-letter top-
+-# level directory could not be removed.
+-#
+-# Shortened some of the top-line dialog output to avoid overflowing the
+-# textbox (needed as some of the packages, especially in X, have very
+-# long base package names now).  <pjv>
+-#
+ # Sun Nov 26 12:38:25 CST 1995
+ # Added patch from Glenn Moloney <glenn@physics.unimelb.edu.au> to allow
+ # packages to be installed to directories other than /.
+@@ -269,22 +258,14 @@
+   elif grep "^$packagebase:" "$TAGFILE" | grep SKP > /dev/null 2> /dev/null ; then
+     PRIORITY="SKP"
+   fi
+-
+-  # Discard a package we aren't going to install right away:
+-  if [ "$MODE" = "menu" -a "$PRIORITY" = "SKP" -a ! "$ALWAYSASK" = "yes" ]; then # SKP overrides menu mode unless -ask used
+-    continue # next package
+-  elif [ "$MODE" = "infobox" -a "$PRIORITY" = "SKP" -a ! "$ALWAYSASK" = "yes" ]; then # SKP overrides infobox mode, too
+-    continue
+-  fi
+-
+   if [ "$PRIORITY" = "ADD" ]; then
+-    PMSG="[ADD]"
++    PMSG="[required]"
+   elif [ "$PRIORITY" = "REC" ]; then
+-    PMSG="[REC]"
++    PMSG="[recommended]"
+   elif [ "$PRIORITY" = "OPT" ]; then
+-    PMSG="[OPT]"
++    PMSG="[optional]"
+   elif [ "$PRIORITY" = "SKP" ]; then
+-    PMSG="[SKP]"
++    PMSG="[skip]"
+   else
+     PMSG=""
+   fi
+@@ -377,13 +358,19 @@
+       cat $DESCRIPTION | grep "^$shortname:" | uniq
+     fi
+   elif [ "$MODE" = "infobox" -a ! "$PRIORITY" = "SKP" ]; then # install non-SKP infobox package
+-    dialog --title "Installing package $shortname $PMSG" --infobox "`cat $TMP/tmpmsg$$`" 0 0
++    dialog --title "Installing package ==>$shortname<== $PMSG" --infobox "`cat $TMP/tmpmsg$$`" 0 0
+   elif [ "$MODE" = "menu" -a "$PRIORITY" = "ADD" -a ! "$ALWAYSASK" = "yes" ]; then # ADD overrides menu mode unless -ask was used
+-    dialog --title "Installing package $shortname $PMSG" --infobox "`cat $TMP/tmpmsg$$`" 0 0
++    dialog --title "Installing package ==>$shortname<== $PMSG" --infobox "`cat $TMP/tmpmsg$$`" 0 0
+   elif [ "$MODE" = "menu" -a "$USERPRIORITY" = "ADD" ]; then # install no matter what $PRIORITY
+-    dialog --title "Installing package $shortname $PMSG" --infobox "`cat $TMP/tmpmsg$$`" 0 0
++    dialog --title "Installing package ==>$shortname<== $PMSG" --infobox "`cat $TMP/tmpmsg$$`" 0 0
++  elif [ "$MODE" = "menu" -a "$PRIORITY" = "SKP" -a ! "$ALWAYSASK" = "yes" ]; then # SKP overrides menu mode unless -ask used
++    rm -f $TMP/tmpmsg$$
++    continue # next package
++  elif [ "$MODE" = "infobox" -a "$PRIORITY" = "SKP" -a ! "$ALWAYSASK" = "yes" ]; then # SKP overrides infobox mode, too
++    rm -f $TMP/tmpmsg$$
++    continue
+   else # we must need a full menu:
+-    dialog --title "Package Name: $shortname $PMSG" --menu "`cat $TMP/tmpmsg$$`" 0 0 3 \
++    dialog --title "Package Name: ==>$shortname<== $PMSG" --menu "`cat $TMP/tmpmsg$$`" 0 0 3 \
+     "Yes" "Install package $shortname" \
+     "No" "Do not install package $shortname" \
+     "Quit" "Abort software installation completely" 2> $TMP/reply$$
+@@ -430,7 +417,7 @@
+   fi
+   echo "FILE LIST:" >> $ADM_DIR/packages/$shortname
+   ( cd $ROOT/ ; $TAR -xzlUpvf - ) < $package >> $TMP/$shortname 2> /dev/null
+-  if [ "`cat $TMP/$shortname | grep '^\./' | wc -l | tr -d ' '`" = "1" ]; then
++  if [ "`cat $TMP/$shortname | grep '^./' | wc -l | tr -d ' '`" = "1" ]; then
+     # Good.  We have a package that meets the Slackware spec.
+     cat $TMP/$shortname >> $ADM_DIR/packages/$shortname
+   else
+diff -Nur x86/setup/nopartHELP ppc/setup/nopartHELP
+--- x86/setup/nopartHELP	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/nopartHELP	2005-04-07 00:20:28.000000000 +0400
+@@ -24,11 +24,8 @@
+ OS. In other words, you probably shouldn't try to make your DOS or
+ other non-Linux partitions with the Linux fdisk. 
+ 
+-"cfdisk" is an equally good version of Linux fdisk that is more
+-graphical and menu driven.  Many people prefer to use "cfdisk".
+-
+ Please make one or more partitions for Linux, and try setup again.
+ If you haven't already, you might want to also make a swap partition
+-while you're in fdisk. 64 megabytes would be a minimum starting size
+-for a single user system.  Linux swap is tagged as type 82.
++while you're in fdisk. 64 megabytes would be a good starting size for
++a single user system. Linux swap is tagged as type 82.
+ 
+diff -Nur x86/setup/pkgtool ppc/setup/pkgtool
+--- x86/setup/pkgtool	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/pkgtool	2007-07-07 13:37:40.000000000 +0400
+@@ -147,15 +147,15 @@
+  CMD_START="true"
+  rm -f $TMP/SeT*
+  while [ 0 ]; do
+-  dialog --title "Slackware Package Tool (pkgtool version 9.0.0)" \
+---menu "\nWelcome to the Slackware package tool.\n\
++  dialog --title "Slackintosh Package Tool (pkgtool version 9.0.0)" \
++--menu "\nWelcome to the Slackintosh package tool.\n\
+ \nWhich option would you like?\n" 17 75 7 \
+ "Current" "Install packages from the current directory" \
+ "Other" "Install packages from some other directory" \
+ "Floppy" "Install packages from floppy disks" \
+ "Remove" "Remove packages that are currently installed" \
+ "View" "View the list of files contained in a package" \
+-"Setup" "Choose Slackware installation scripts to run again" \
++"Setup" "Choose Slackintosh installation scripts to run again" \
+ "Exit" "Exit Pkgtool" 2> $TMP/reply
+   if [ ! $? = 0 ]; then
+    rm -f $TMP/reply
+@@ -350,7 +350,7 @@
+ Your source device cannot be accessed properly.
+ 
+ Please be sure that it is mounted on $SOURCE_DIR,
+-and that the Slackware disks are found in subdirectories 
++and that the Slackintosh disks are found in subdirectories 
+ of $SOURCE_DIR like specified.
+ 
+ EOF
+@@ -560,7 +560,7 @@
+ 
+ that I don't recognize. Please be sure this package is
+ really supposed to be here, and is not left over from an
+-old version of Slackware. Sometimes this can happen at the 
++old version of Slackintosh. Sometimes this can happen at the 
+ archive sites.
+ 
+ EOF
+diff -Nur x86/setup/setup ppc/setup/setup
+--- x86/setup/setup	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/setup	2008-06-03 13:01:32.000000000 +0400
+@@ -49,21 +49,21 @@
+ # Before probing, activate any LVM partitions
+ # that may exist from before the boot:
+ vgchange -ay 1> /dev/null 2> /dev/null
+-if probe -l 2> /dev/null | egrep 'Linux$' 1> /dev/null 2> /dev/null ; then
+- probe -l 2> /dev/null | egrep 'Linux$' | sort 1> $TMP/SeTplist 2> /dev/null
++if probe -l 2> /dev/null | egrep 'Linux native$' 1> /dev/null 2> /dev/null ; then
++ probe -l 2> /dev/null | egrep 'Linux native$' | sort 1> $TMP/SeTplist 2> /dev/null
+ else
+  dialog --title "NO LINUX PARTITIONS DETECTED" \
+  --msgbox "There don't seem to be any partitions on this machine of type \
+ Linux.  You'll need to make at least one of these to install Linux.  \
+ To do this, you'll need to leave 'setup', and make the partitions using \
+-'cfdisk' or 'fdisk'.  For more information, read the 'setup' help \
++'mac-fdisk'.  For more information, read the 'setup' help \
+ file from the next menu." 10 60
+ fi
+ T_PX="/mnt"
+ echo "$T_PX" > $TMP/SeTT_PX
+-ROOT_DEVICE="`mount | grep "on / " | cut -f 1 -d ' '`"
++ROOT_DEVICE="`mount | fgrep "on / " | cut -f 1 -d ' '`"
+ echo "$ROOT_DEVICE" > $TMP/SeTrootdev
+-if mount | grep /var/log/mount 1> /dev/null 2> /dev/null ; then # clear source
++if mount | fgrep /var/log/mount 1> /dev/null 2> /dev/null ; then # clear source
+  umount /var/log/mount                                           # location
+ fi
+ # Anything mounted on /var/log/mount now is a fatal error:
+@@ -84,12 +84,12 @@
+ 
+ while [ 0 ]; do
+ 
+- dialog --title "Slackware Linux Setup (version 12.1)" \
++ dialog --title "Slackintosh Linux Setup (version 12.1)" \
+ --menu \
+-"Welcome to Slackware Linux Setup.\n\
++"Welcome to Slackintosh Linux Setup.\n\
+ Select an option below using the UP/DOWN keys and SPACE or ENTER.\n\
+ Alternate keys may also be used: '+', '-', and TAB." 18 72 9 \
+-"HELP" "Read the Slackware Setup HELP file" \
++"HELP" "Read the Slackintosh Setup HELP file" \
+ "KEYMAP" "Remap your keyboard if you're not using a US one" \
+ "ADDSWAP" "Set up your swap partition(s)" \
+ "TARGET" "Set up your target partitions" \
+@@ -97,7 +97,7 @@
+ "SELECT" "Select categories of software to install" \
+ "INSTALL" "Install selected software" \
+ "CONFIGURE" "Reconfigure your Linux system" \
+-"EXIT" "Exit Slackware Linux Setup" 2> $TMP/hdset
++"EXIT" "Exit Slackintosh Linux Setup" 2> $TMP/hdset
+  if [ ! $? = 0 ]; then
+   rm -f $TMP/hdset $TMP/SeT*
+   exit
+@@ -149,8 +149,8 @@
+  fi
+ 
+  if [ "$MAINSELECT" = "SELECT" ]; then
+-  if [ -r /var/log/mount/isolinux/setpkg ]; then
+-    sh /var/log/mount/isolinux/setpkg
++  if [ -r /var/log/mount/iso/setpkg ]; then
++    sh /var/log/mount/iso/setpkg
+   else
+     SeTPKG
+   fi
+@@ -189,7 +189,7 @@
+ using 'expert' or 'menu' mode.  Which type of prompting would you like \
+ to use?" \
+    20 76 7 \
+-   "full" "Install everything (4.8+ GB of software, RECOMMENDED!)" \
++   "full" "Install everything (4.5+ GB of software, RECOMMENDED!)" \
+    "menu" "Choose individual packages from interactive menus" \
+    "expert" "This is actually the same as the \"menu\" option" \
+    "newbie" "Use verbose prompting (the X series takes one year)" \
+@@ -279,12 +279,10 @@
+   done
+   export MAKETAG;
+   sleep 3
+-  if [ -r $TMP/SeTCDdev ]; then # only try to remount media if it's a CD/DVD
+-    slackinstall --device `cat $TMP/SeTCDdev` --promptmode $MODE --srcpath `cat $TMP/SeTDS` --mountpoint /var/log/mount --target $T_PX --series $SERIES
+-  elif [ -r $TMP/SeTremotesvr ]; then
+-    slackinstall --device noremount --promptmode $MODE --srcpath `cat $TMP/SeTDS` --mountpoint /var/log/mount --target $T_PX --series $SERIES --net `cat $TMP/SeTremotesvr`
+-  else
++  if [ ! -r $TMP/SeTCDdev ]; then # only try to remount media if it's a CD/DVD
+     slackinstall --device noremount --promptmode $MODE --srcpath `cat $TMP/SeTDS` --mountpoint /var/log/mount --target $T_PX --series $SERIES
++  else
++    slackinstall --device `cat $TMP/SeTCDdev` --promptmode $MODE --srcpath `cat $TMP/SeTDS` --mountpoint /var/log/mount --target $T_PX --series $SERIES
+   fi
+   MAINSELECT="CONFIGURE"
+  fi
+@@ -316,7 +314,10 @@
+     printf "%-16s %-16s %-11s %-16s %-3s %s\n" "/dev/fd0" "/mnt/floppy" "auto" "noauto,owner" "0" "0" >> $T_PX/etc/fstab
+     printf "%-16s %-16s %-11s %-16s %-3s %s\n" "devpts" "/dev/pts" "devpts" "gid=5,mode=620" "0" "0" >> $T_PX/etc/fstab
+     printf "%-16s %-16s %-11s %-16s %-3s %s\n" "proc" "/proc" "proc" "defaults" "0" "0" >> $T_PX/etc/fstab
+-    printf "%-16s %-16s %-11s %-16s %-3s %s\n" "tmpfs" "/dev/shm" "tmpfs" "defaults" "0" "0" >> $T_PX/etc/fstab
++   fi
++   # You don't even slightly want to know.  ;-)
++   if [ -d /mnt/usr/share/fonts/misc ]; then
++     touch /usr/share/fonts/misc
+    fi
+    dialog --title "SETUP COMPLETE" --msgbox "System configuration \
+ and installation is complete.  You may EXIT setup and reboot your machine with \
+@@ -335,11 +336,11 @@
+ if [ -d $T_PX/tmp ]; then
+  chmod 1777 $T_PX/tmp
+ fi
+-if mount | grep /var/log/mount 1> /dev/null 2> /dev/null ; then
++if mount | fgrep /var/log/mount 1> /dev/null 2> /dev/null ; then
+  umount /var/log/mount
+ fi
+ # Anything mounted on /var/log/mount now is a fatal error:
+-if mount | grep /var/log/mount 1> /dev/null 2> /dev/null ; then
++if mount | fgrep /var/log/mount 1> /dev/null 2> /dev/null ; then
+   exit
+ fi
+ # If the mount table is corrupt, the above might not do it, so we will
+@@ -355,7 +356,7 @@
+ 
+ if [ -f /mnt/etc/fstab ]; then
+   echo
+-  echo "Installation of Slackware Linux is complete."
++  echo "Installation of Slackintosh Linux is complete."
+   echo
+   # umount CD:
+   if [ -r $TMP/SeTCDdev ]; then
+@@ -375,9 +376,6 @@
+ 
+ # final cleanup
+ rm -f $TMP/tagfile $TMP/SeT* $TMP/tar-error $TMP/PKGTOOL_REMOVED
+-rm -f $var/log/mount/treecache
+-rm -rf $TMP/treecache
+-rm -rf $TMP/pkgcache
+ rmdir /mnt/tmp/orbit-root 2> /dev/null
+ # end slackware setup script
+ 
+diff -Nur x86/setup/slackinstall ppc/setup/slackinstall
+--- x86/setup/slackinstall	2008-05-01 02:42:25.000000000 +0400
++++ ppc/setup/slackinstall	2006-10-03 18:59:33.000000000 +0400
+@@ -26,45 +26,6 @@
+ 
+ # functions
+ 
+-get_pkg () {
+-  # Download a package from a remote server.
+-  # $1 == package series
+-  # $2 == package base name
+-  # $3 == additional options to the downloader (like, '-v')
+-  # REMOTESVR points to the root of the slackware tree, and is composed of
+-  # comma-separated values (protocol://remote_ipaddr[:portnumber],remote_root)
+-  # like this example: 'ftp://192.168.0.22,/pub/slackware-12.1'
+-  local REMOTE_URL=$(echo $REMOTESVR | cut -d, -f1)
+-  local REMOTE_ROOT=$(echo $REMOTESVR | cut -d, -f2)
+-  local PKGSIZE=`cat \`cat $TMP/SeTDS\`/${1}/${2}.size`
+-  # So Pat does not get a seizure ;-)
+-  #dialog --title "FTP/HTTP DOWNLOAD ==> series '$1' <==" --infobox \
+-  #  "Downloading ${2} ($PKGSIZE) ..." 3 72
+-  mkdir -p `cat $TMP/SeTDS`/${1}
+-  cat /dev/null > `cat $TMP/SeTDS`/${1}/${2}.tgz
+-  cat /dev/null > `cat $TMP/SeTDS`/${1}/${2}.txt
+-  wget $3 -c -P `cat $TMP/SeTDS`/${1} \
+-     $REMOTE_URL$REMOTE_ROOT/slackware/${1}/${2}.txt
+-  wget $3 -c -P `cat $TMP/SeTDS`/${1} \
+-     $REMOTE_URL$REMOTE_ROOT/slackware/${1}/${2}.tgz
+-  if [ $? -ne 0 ]; then # One retry for aborted transfers
+-   wget $3 -c -P `cat $TMP/SeTDS`/${1} \
+-     $REMOTE_URL$REMOTE_ROOT/slackware/${1}/${2}.tgz
+-  fi
+-  if [ $? -ne 0 ]; then
+-   dialog --title "FTP/HTTP DOWNLOAD FAILURE" --msgbox \
+-     "Downloading ${2} FAILED." 5 72
+-  fi
+-}
+-
+-zap_pkg () {
+-  # Cleanup a download from a remote server.
+-  # $1 == package series
+-  # $2 == package base name
+-  cat /dev/null > `cat $TMP/SeTDS`/${1}/${2}.tgz # zero the local file
+-  rm -f `cat $TMP/SeTDS`/${1}/${2}.txt # remove the description file
+-}
+-
+ updatetagfiles() {
+   if [ $MODE = newbie -o $MODE = full ]; then
+     cat $TMP/series/series.in | while read series ; do
+@@ -127,7 +88,6 @@
+     sleep 1
+     # Install the package series:
+     for package in $SRCPATH/$series/*.tgz ; do
+-      [ "x$REMOTESVR" != "x" ] && get_pkg $series $(basename $package .tgz) '-q'
+       if [ "$MODE" = "full" ]; then # install the package
+         installpkg -root $ROOTDIR -infobox -priority ADD $package
+         ERROR=$?
+@@ -138,7 +98,6 @@
+       if [ ! $ERROR = 0 ]; then
+         errorcode $ERROR $package
+       fi
+-      [ "x$REMOTESVR" != "x" ] && zap_pkg $series $(basename $package .tgz)
+     done
+     # A "README_SPLIT.TXT" file means the series continues on another CD:
+     if [ -r $SRCPATH/$series/README_SPLIT.TXT -o -r $SRCPATH/$series/readme_split.txt ] ; then
+@@ -153,7 +112,7 @@
+ remount_disc() {
+   umount $DEVICE
+   eject $DEVICE
+-  dialog --title "INSERT NEXT DISC" --menu "Please insert the next Slackware disc and \
++  dialog --title "INSERT NEXT DISC" --menu "Please insert the next Slackintosh disc and \
+ press ENTER to continue installing packages." \
+ 10 62 2 \
+   "Continue" "Install packages from the next disc" \
+@@ -188,8 +147,6 @@
+      DEVICE=`echo $2` ; shift 2 ;;
+    "--series")
+      SERIES=`echo $2` ; shift 2 ;;
+-   "--net")
+-     REMOTESVR=`echo $2` ; shift 2 ;;
+    *)
+      echo "Unrecognized option $1" ; shift 1 ;; 
+    esac
