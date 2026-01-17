@@ -186,6 +186,6 @@ export SLACK_KERNEL
 # Fake login:  (fooled ya! ;^)
 
 cat /etc/issue
-echo -n "slackintosh-12.0 login: "
+echo -n "slackintosh-12.1 login: "
 read BOGUS_LOGIN
 cat /etc/motd
